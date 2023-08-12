@@ -1,0 +1,51 @@
+﻿@model List<ResolutionVM>
+@{
+    ViewData["Title"] = "Resolution";
+}
+
+<div class="container my-3">
+    <h2 class="text-center">Categories</h2>
+    <div class="create-btn">
+        <a asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Resolution Size
+                    </th>
+                    <th>
+                        Created Date
+                    </th>
+                    <th>
+                        Options
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var resolution in Model)
+                {
+                    <tr class="parent">
+                        <td>
+                            @resolution.ResolutionP
+                        </td>
+                        <td>
+                            @resolution.CreateDate
+                        </td>
+                        <td>
+                            <a asp-action="Detail" asp-route-id="@resolution.Id" class="btn btn-primary btn-rounded btn-fw">Detail</a>
+                            <a asp-action="Edit" asp-route-id="@resolution.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
+                            <button type="submit" data-id="@resolution.Id" id="delete" class="btn btn-danger btn-rounded btn-fw">Delete</button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section AdminScripts{
+    <script src="~/admin/assets/js/resolution.js"></script>
+}

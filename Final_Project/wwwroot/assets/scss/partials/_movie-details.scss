@@ -1,0 +1,262 @@
+.movie-details-area {
+    background-position: top center;
+    background-size: cover;
+    padding: 175px 0 120px;
+  }
+  .movie-details-img {
+    position: relative;
+  }
+  .movie-details-img .popup-video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  .movie-details-img img {
+    border-radius: 5px;
+  }
+  .movie-details-content {
+    margin-left: 23px;
+  }
+  .movie-details-content h5 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #e4d804;
+  }
+  .movie-details-content h2 {
+    font-size: 60px;
+    margin-bottom: 20px;
+  }
+  .movie-details-content .banner-meta {
+    margin-bottom: 15px;
+  }
+  .movie-details-content h2 > span,
+  .movie-details-prime ul li.share a:hover {
+    color: #e4d804;
+  }
+  .movie-details-content p {
+    margin-bottom: 0;
+  }
+  .movie-details-prime ul {
+    display: flex;
+    align-items: center;
+    max-width: 475px;
+    background: #242c38;
+    border-radius: 4px;
+    border: 1px solid #343434;
+    padding: 0px 25px 25px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+  }
+  .movie-details-prime ul li {
+    margin-top: 25px;
+  }
+  .movie-details-prime ul li.share {
+    padding-right: 25px;
+    margin-right: 25px;
+    position: relative;
+    text-align: center;
+  }
+  .movie-details-prime ul li.share::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 56px;
+    background: #fff;
+    opacity: 0.15;
+  }
+  .movie-details-prime ul li.share a {
+    display: block;
+    color: #bcbcbc;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .movie-details-prime ul li.share a i {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 16px;
+    color: #fff;
+  }
+  .movie-details-prime ul li.streaming h6 {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .movie-details-prime ul li.streaming span {
+    display: block;
+    color: #bcbcbc;
+    font-size: 12px;
+  }
+  .movie-details-prime ul li.watch {
+    margin-left: auto;
+  }
+  .movie-details-prime ul li.watch .btn {
+    font-size: 10px;
+    padding: 13px 26px;
+    letter-spacing: 0;
+    background: transparent;
+  }
+  .movie-details-prime ul li.watch .btn:hover {
+    background: #e4d804;
+  }
+  .movie-details-btn .download-btn {
+    background: #e4d804;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #14141d;
+    letter-spacing: 5px;
+    position: absolute;
+    bottom: 65px;
+    right: -50px;
+    transform: rotate(90deg);
+    padding: 43px 49px;
+    border-radius: 6px;
+  }
+  .episode-bg {
+    background-position: top center;
+    background-size: cover;
+    padding: 120px 0 115px;
+  }
+  .episode-top-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    position: relative;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+  }
+  .episode-watch-wrap::after,
+  .episode-top-wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 1px 3px 0px rgb(102 102 102 / 46%);
+  }
+  .episode-top-wrap .section-title .title {
+    font-size: 30px;
+  }
+  .total-views-count p {
+    margin-bottom: 0;
+    color: #e3dfdf;
+  }
+  .total-views-count p i {
+    margin-left: 12px;
+    color: #e4d804;
+  }
+  .episode-watch-wrap .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: transparent;
+    background-clip: border-box;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 35px;
+  }
+  .episode-watch-wrap .card .card-header {
+    padding: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border-bottom: none;
+    margin: 0;
+  }
+  .episode-watch-wrap .card .card-header button {
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    color: #e0e0e0;
+  }
+  .episode-watch-wrap .card .card-header button .season {
+    font-size: 16px;
+    font-weight: 700;
+    width: 50%;
+    flex: 0 0 50%;
+  }
+  .episode-watch-wrap .card-body ul li a:hover,
+  .episode-watch-wrap .card-body ul li a i,
+  .episode-watch-wrap .card .card-header button .video-count {
+    color: #e4d804;
+  }
+  .episode-watch-wrap .card .card-header button.collapsed .video-count {
+    color: #9b9b9b;
+  }
+  .episode-watch-wrap .card .card-body {
+    padding: 0 0;
+  }
+  .episode-watch-wrap .card-body ul {
+    margin-top: 25px;
+    background: #040406;
+    padding: 30px 30px 40px;
+  }
+  .episode-watch-wrap .card-body ul li {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #242426;
+  }
+  .episode-watch-wrap .card-body ul li:last-child {
+    margin-bottom: 0;
+  }
+  .episode-watch-wrap .card-body ul li .duration {
+    float: right;
+    color: #e3dfdf;
+  }
+  .episode-watch-wrap .card-body ul li .duration i {
+    color: #e4d804;
+    margin-right: 7px;
+  }
+  .episode-watch-wrap .card-body ul li a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #c8c8c8;
+  }
+  .episode-watch-wrap .card-body ul li a i {
+    font-size: 12px;
+    margin-right: 15px;
+  }
+  .episode-watch-wrap .card:last-child {
+    margin-bottom: 0;
+  }
+  .episode-watch-wrap {
+    padding-bottom: 20px;
+    position: relative;
+  }
+  .episode-img img {
+    max-width: 100%;
+  }
+  .movie-episode-wrap {
+    margin-right: 20px;
+  }
+  .movie-history-wrap .title {
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.349);
+    border: 1px solid #29272f;
+    padding: 25px 40px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+  .movie-history-wrap .title span {
+    color: #e4d804;
+  }
+  .movie-history-wrap p {
+    margin-bottom: 0;
+    padding: 0 35px;
+  }
+  .movie-history-wrap {
+    margin-top: 75px;
+  }

@@ -1,0 +1,41 @@
+﻿@model ResolutionDetailVM
+
+@{
+    ViewData["Title"] = "Resolution Detail";
+}
+
+
+<style>
+    .active-paginate {
+        background-color: #0884ec !important;
+        color: white !important;
+    }
+</style>
+
+<div class="container my-3">
+    <h2 class="text-center">Advertising</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Resolution Size
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent">
+                    <td>
+                        @Model.ResolutionP
+                    </td>
+                    <td>
+                        @Model.CreateDate
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+.banner-bg {
+    padding: 295px 0 273px;
+    background-position: center;
+    background-size: cover;
+  }
+  .banner-content .sub-title {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  .banner-content .title {
+    font-size: 60px;
+    line-height: 1.2;
+    margin-bottom: 29px;
+  }
+  .banner-meta {
+    margin-bottom: 35px;
+  }
+  .banner-meta ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .banner-meta ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: 18px;
+  }
+  .banner-meta ul li:last-child {
+    margin-right: 0;
+  }
+  .banner-meta ul li.quality > span {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #21232b;
+    background: #fff;
+    font-weight: 700;
+    padding: 7px 11px;
+    line-height: 1;
+  }
+  .banner-meta ul li.quality > span:last-child {
+    background: transparent;
+    color: #fff;
+    margin-left: 9px;
+    border: 2px solid #fff;
+    padding: 5px 10px;
+  }
+  .banner-meta ul li.category > a {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e3dfdf;
+  }
+  .banner-meta ul li.category > a + a {
+    margin-left: 5px;
+  }
+  .banner-meta ul li.release-time > span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #e3dfdf;
+  }
+  .banner-meta ul li.release-time > span + span {
+    margin-left: 15px;
+  }
+  .banner-meta ul li.release-time > span > i {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+  .slider-bg {
+    background-position: top center;
+    background-size: cover;
+    padding: 135px 0 120px;
+  }
+  .slider-img > img {
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0px 1px 13px 0px rgba(25, 25, 25, 0.004);
+    max-width: 100%;
+    margin-right: -15px;
+  }

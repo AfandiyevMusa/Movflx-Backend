@@ -1,0 +1,19 @@
+.pagination-wrap ul {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .pagination-wrap ul li a {
+    display: block;
+    font-size: 14px;
+    color: #c2c2c2;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1.5px solid #c2c2c2;
+  }
+  .pagination-wrap ul li.active a,
+  .pagination-wrap ul li a:hover {
+    color: #171d22;
+    border-color: #e4d804;
+    background: #e4d804;
+  }

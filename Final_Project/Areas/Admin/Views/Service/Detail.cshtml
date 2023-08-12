@@ -1,0 +1,53 @@
+﻿@model ServiceDetailVM
+
+@{
+    ViewData["Title"] = "Services View";
+}
+
+
+<style>
+    .active-paginate {
+        background-color: #0884ec !important;
+        color: white !important;
+    }
+</style>
+
+<div class="container my-3">
+    <h2 class="text-center">City</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent">
+                    <td>
+                        @Model.Title
+                    </td>
+                    <td>
+                        <img src="~/assets/img/banner/@Model.Image" alt="image" style="width:120px;height:120px;" />
+                    </td>
+                    <td>
+                        @Model.Description
+                    </td>
+                    <td>
+                        @Model.CreateDate
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

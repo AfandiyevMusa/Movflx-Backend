@@ -1,0 +1,101 @@
+.contact-bg {
+    background-position: top center;
+    background-size: cover;
+    padding: 120px 0;
+  }
+  .widget-title .title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 18px;
+  }
+  .widget-title .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40px;
+    height: 3px;
+    background: #e4d804;
+    border-radius: 1.5px;
+  }
+  .contact-form {
+    padding: 30px 30px 40px;
+    border: 1px solid #232226;
+  }
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    border: 1px solid #1f1e24;
+    background: #1f1e24;
+    border-radius: 4px;
+    color: #bcbcbc;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.46);
+    font-weight: 500;
+    padding: 14px 25px;
+    margin-bottom: 30px;
+    transition: 0.3s linear;
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #bcbcbc;
+    font-weight: 500;
+  }
+  .contact-form textarea {
+    min-height: 155px;
+  }
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #e4d804;
+  }
+  .contact-info-wrap {
+    background: #1f1e24;
+    padding: 40px 34px 60px;
+    box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 0.46);
+  }
+  .contact-info-wrap > p {
+    padding-bottom: 25px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #313035;
+  }
+  .contact-info-wrap > p span {
+    font-weight: 600;
+    color: #fafafa;
+  }
+  .contact-info-list ul li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #313035;
+  }
+  .contact-info-list ul li:last-child {
+    margin-bottom: 0;
+  }
+  .contact-info-list .icon {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    text-align: center;
+    font-size: 16px;
+    color: #1f1e24;
+    background: #e4d804;
+    line-height: 46px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  .contact-info-list li > p {
+    margin-bottom: 0;
+  }
+  .contact-info-list li > p span {
+    color: #e5e5e5;
+    margin-right: 5px;
+    font-weight: 600;
+  }
+  #map {
+    height: 439px;
+  
+    /* cursor: pointer; */
+  }

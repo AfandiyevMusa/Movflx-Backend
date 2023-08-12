@@ -1,0 +1,138 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Views\Blog\" />
+    <None Remove="Views\BlogDetail\" />
+    <None Remove="Views\Contact\" />
+    <None Remove="Views\Movie\" />
+    <None Remove="Views\MovieDetail\" />
+    <None Remove="Views\Pricinig\" />
+    <None Remove="Views\TvShows\" />
+    <None Remove="Areas\" />
+    <None Remove="Areas\Admin\" />
+    <None Remove="Areas\Admin\Views\" />
+    <None Remove="Areas\Admin\Controllers\" />
+    <None Remove="Areas\Admin\ViewModels\" />
+    <None Remove="Data\" />
+    <None Remove="Helpers\" />
+    <None Remove="Responses\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="ViewModels\" />
+    <None Remove="ViewModels\Account\" />
+    <None Remove="Areas\Admin\Views\Dashboard\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Header\" />
+    <None Remove="Views\Shared\Components\Footer\" />
+    <None Remove="Views\Account\" />
+    <None Remove="Views\TvSeriesDetail\" />
+    <None Remove="Areas\Admin\Views\Shared\" />
+    <None Remove="Areas\Admin\ViewModels\Blog\" />
+    <None Remove="Areas\Admin\ViewModels\Contact\" />
+    <None Remove="Areas\Admin\ViewModels\Movie\" />
+    <None Remove="Areas\Admin\ViewModels\Pricing\" />
+    <None Remove="Areas\Admin\ViewModels\TvShows\" />
+    <None Remove="Areas\Admin\Views\Blog\" />
+    <None Remove="Areas\Admin\Views\Contact\" />
+    <None Remove="Areas\Admin\Views\Movie\" />
+    <None Remove="Areas\Admin\Views\Pricing\" />
+    <None Remove="Areas\Admin\Views\TvShows\" />
+    <None Remove="Areas\Admin\ViewModels\BlogAuthor\" />
+    <None Remove="Areas\Admin\Views\BlogAuthor\" />
+    <None Remove="Areas\Admin\ViewModels\Resolution\" />
+    <None Remove="Areas\Admin\Views\Resolution\" />
+    <None Remove="Areas\Admin\ViewModels\VideoQuality\" />
+    <None Remove="Areas\Admin\Views\VideoQuality\" />
+    <None Remove="Areas\Admin\ViewModels\Tag\" />
+    <None Remove="Areas\Admin\Views\Tag\" />
+    <None Remove="Areas\Admin\ViewModels\Category\" />
+    <None Remove="Areas\Admin\Views\Category\" />
+    <None Remove="Areas\Admin\ViewModels\ServiceOption\" />
+    <None Remove="Areas\Admin\Views\ServiceOption\" />
+    <None Remove="Areas\Admin\ViewModels\Topic\" />
+    <None Remove="Areas\Admin\Views\Topic\" />
+    <None Remove="Areas\Admin\ViewModels\Service\" />
+    <None Remove="Areas\Admin\Views\Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\BlogDetail\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Movie\" />
+    <Folder Include="Views\MovieDetail\" />
+    <Folder Include="Views\Pricing\" />
+    <Folder Include="Views\TvShows\" />
+    <Folder Include="Areas\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Views\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\ViewModels\" />
+    <Folder Include="Data\" />
+    <Folder Include="Responses\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Account\" />
+    <Folder Include="Areas\Admin\Views\Dashboard\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Header\" />
+    <Folder Include="Views\Shared\Components\Footer\" />
+    <Folder Include="Views\TvSeriesDetail\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\ViewModels\Blog\" />
+    <Folder Include="Areas\Admin\ViewModels\Contact\" />
+    <Folder Include="Areas\Admin\ViewModels\Movie\" />
+    <Folder Include="Areas\Admin\ViewModels\Pricing\" />
+    <Folder Include="Areas\Admin\ViewModels\TvShows\" />
+    <Folder Include="Areas\Admin\Views\Blog\" />
+    <Folder Include="Areas\Admin\Views\Contact\" />
+    <Folder Include="Areas\Admin\Views\Movie\" />
+    <Folder Include="Areas\Admin\Views\Pricing\" />
+    <Folder Include="Areas\Admin\Views\TvShows\" />
+    <Folder Include="Areas\Admin\ViewModels\BlogAuthor\" />
+    <Folder Include="Areas\Admin\Views\BlogAuthor\" />
+    <Folder Include="Areas\Admin\ViewModels\Resolution\" />
+    <Folder Include="Areas\Admin\Views\Resolution\" />
+    <Folder Include="Areas\Admin\ViewModels\VideoQuality\" />
+    <Folder Include="Areas\Admin\Views\VideoQuality\" />
+    <Folder Include="Areas\Admin\ViewModels\Tag\" />
+    <Folder Include="Areas\Admin\Views\Tag\" />
+    <Folder Include="Areas\Admin\ViewModels\Category\" />
+    <Folder Include="Areas\Admin\Views\Category\" />
+    <Folder Include="Areas\Admin\ViewModels\ServiceOption\" />
+    <Folder Include="Areas\Admin\Views\ServiceOption\" />
+    <Folder Include="Areas\Admin\ViewModels\Topic\" />
+    <Folder Include="Areas\Admin\Views\Topic\" />
+    <Folder Include="Areas\Admin\ViewModels\Service\" />
+    <Folder Include="Areas\Admin\Views\Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.13">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.13">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="MailKit" Version="4.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+</Project>

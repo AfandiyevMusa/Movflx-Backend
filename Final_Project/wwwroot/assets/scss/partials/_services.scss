@@ -1,0 +1,127 @@
+.services-bg {
+    background-position: center;
+    background-size: cover;
+    padding: 120px 0;
+  }
+  .services-img-wrap {
+    position: relative;
+  }
+  .services-img-wrap > img {
+    max-width: 100%;
+  }
+  .services-img-wrap .download-btn {
+    background: #e4d804;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #14141d;
+    letter-spacing: 5px;
+    position: absolute;
+    bottom: 65px;
+    right: -70px;
+    transform: rotate(90deg);
+    padding: 43px 49px;
+    border-radius: 6px;
+  }
+  .download-btn img {
+    max-width: 24px;
+    transform: rotate(-90deg);
+  }
+  .services-content-wrap {
+    padding-left: 40px;
+  }
+  .title-style-two .sub-title {
+    padding-left: 53px;
+    color: #e4e2e2;
+  }
+  .title-style-two .sub-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 40px;
+    height: 3px;
+  }
+  .services-bg .title-style-two {
+    padding-right: 100px;
+  }
+  .services-content-wrap > p {
+    margin-bottom: 45px;
+  }
+  .services-list ul li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px dashed #38373c;
+  }
+  .services-list ul li .icon {
+    width: 95px;
+    height: 95px;
+    line-height: 93px;
+    text-align: center;
+    border: 1px dashed #e4d804;
+    border-radius: 50%;
+    flex: 0 0 95px;
+    position: relative;
+    font-size: 38px;
+    color: #fff;
+    margin-right: 20px;
+    z-index: 1;
+  }
+  .services-list ul li .icon::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    z-index: -1;
+    transition: 0.3s linear;
+    opacity: 0;
+  }
+  .services-list ul li:hover .icon::before {
+    opacity: 1;
+  }
+  .services-list ul li .content h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .services-list ul li .content p {
+    margin-bottom: 0;
+  }
+  .services-list {
+    padding-right: 110px;
+  }
+  .services-list ul li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border: none;
+  }
+  .services-bg-two {
+    padding: 270px 0 120px;
+    background-position: center;
+    background-size: cover;
+  }
+  .services-bg-two .services-content-wrap {
+    padding-left: 0;
+    padding-right: 50px;
+  }
+  .services-bg-two .services-list {
+    padding-right: 0;
+  }
+  .services-bg-two .services-img-wrap {
+    text-align: right;
+  }
+  .services-bg-two .services-img-wrap > img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 3px 24px 0px rgba(7, 7, 7, 0.52);
+  }
+  .services-bg-two .services-img-wrap .download-btn {
+    bottom: 119px;
+    right: auto;
+    left: -63px;
+    padding: 28px 55px;
+  }

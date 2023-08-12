@@ -1,0 +1,51 @@
+﻿@model List<TagVM>
+@{
+    ViewData["Title"] = "Tag";
+}
+
+<div class="container my-3">
+    <h2 class="text-center">Video Quality</h2>
+    <div class="create-btn">
+        <a asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Tag Name
+                    </th>
+                    <th>
+                        Created Date
+                    </th>
+                    <th>
+                        Options
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tag in Model)
+                {
+                    <tr class="parent">
+                        <td>
+                            @tag.Name
+                        </td>
+                        <td>
+                            @tag.CreateDate
+                        </td>
+                        <td>
+                            <a asp-action="Detail" asp-route-id="@tag.Id" class="btn btn-primary btn-rounded btn-fw">Detail</a>
+                            <a asp-action="Edit" asp-route-id="@tag.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
+                            <button type="submit" data-id="@tag.Id" id="delete" class="btn btn-danger btn-rounded btn-fw">Delete</button>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section AdminScripts{
+    <script src="~/admin/assets/js/tag.js"></script>
+}

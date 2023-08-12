@@ -1,0 +1,53 @@
+﻿@model BlogAuthorDetailVM
+
+@{
+    ViewData["Title"] = "Advertising View";
+}
+
+
+<style>
+    .active-paginate {
+        background-color: #0884ec !important;
+        color: white !important;
+    }
+</style>
+
+<div class="container my-3">
+    <h2 class="text-center">Advertising</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        FullName
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent">
+                    <td>
+                        @Model.FullName
+                    </td>
+                    <td>
+                        @Model.Age
+                    </td>
+                    <td>
+                        @Model.Address
+                    </td>
+                    <td>
+                        @Model.CreatedDate
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

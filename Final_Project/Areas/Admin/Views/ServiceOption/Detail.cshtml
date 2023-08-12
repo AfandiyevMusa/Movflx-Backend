@@ -1,0 +1,47 @@
+﻿@model ServiceOptionDetailVM
+
+@{
+    ViewData["Title"] = "Service Option Detail";
+}
+
+
+<style>
+    .active-paginate {
+        background-color: #0884ec !important;
+        color: white !important;
+    }
+</style>
+
+<div class="container my-3">
+    <h2 class="text-center">Advertising</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Detail
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent">
+                    <td>
+                        @Model.Title
+                    </td>
+                    <td>
+                        @Model.Description
+                    </td>
+                    <td>
+                        @Model.CreateDate
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,112 @@
+/*
+  Theme Name: Movflx - Online Movies & TV Shows Template.
+  Author Name: ThemeBeyond.
+  Support: ctoofbb@gmail.com.
+  Description: Movflx - Online Movies & TV Shows Template.
+  Version: 1.0
+*/
+
+/* CSS Index
+-----------------------------------
+
+1. Theme default css
+2. Header
+3. Search modal
+4. Mobile-menu
+5. Breadcrumb
+6. Banner
+7. Up-coming
+8. Services
+9. Top-movies
+10. Gallery
+11. Pagination
+12. Live-show
+13. Movie-details
+14. Pricing
+15. Tv-series
+16. Blog
+17. Newsletter
+18. Contact
+19. Footer
+20. Preloader
+
+*/
+
+/* 1. Theme default css */
+
+@import "./partials/theme";
+
+/* 2. Header */
+
+@import "./partials/header";
+
+/* 3. Search modal */
+
+@import "./partials/search-modal";
+
+/* 4. Mobile-menu */
+
+@import "./partials/mobile-menu";
+
+/* 5. Breadcrumb */
+@import "./partials/breadcrumb";
+
+
+/* 6. Banner */
+@import "./partials/banner";
+
+
+/* 7. Up-coming */
+@import "./partials/upcoming";
+
+
+/* 8. Services */
+
+@import "./partials/services";
+
+/* 9. Top-movies */
+
+@import "./partials/top-movies";
+
+/* 10. Gallery */
+@import "./partials/gallery";
+
+
+/* 11. Pagination */
+@import "./partials/pagination";
+
+
+/* 12. Live-show */
+@import "./partials/live-show";
+
+
+/* 13. Movie-details */
+
+@import "./partials/movie-details";
+
+/* 14. Pricing */
+@import "./partials/pricing";
+
+
+/* 15. Tv-series */
+@import "./partials/tv-series";
+
+
+/* 16. Blog */
+@import "./partials/blog";
+
+
+/* 17. Newsletter */
+@import "./partials/newsletter";
+
+
+/* 18. Contact */
+@import "./partials/contact";
+
+
+/* 19. Footer */
+@import "./partials/footer";
+
+/* 20. Preloader */
+
+@import "./partials/preloader";
