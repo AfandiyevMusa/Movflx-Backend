@@ -65,6 +65,8 @@
     <None Remove="Areas\Admin\Views\Streaming\" />
     <None Remove="Areas\Admin\ViewModels\Seasons\" />
     <None Remove="Areas\Admin\Views\Season\" />
+    <None Remove="Areas\Admin\ViewModels\Episode\" />
+    <None Remove="Areas\Admin\Views\Episode\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -124,6 +126,8 @@
     <Folder Include="Areas\Admin\Views\Streaming\" />
     <Folder Include="Areas\Admin\ViewModels\Seasons\" />
     <Folder Include="Areas\Admin\Views\Season\" />
+    <Folder Include="Areas\Admin\ViewModels\Episode\" />
+    <Folder Include="Areas\Admin\Views\Episode\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

@@ -1,6 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model MovieCreateVM
 @{
+    ViewData["Title"] = "Create Movie";
+}
+
+
+<div class="container my-5">
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group mt-3">
+            <input asp-for="Name" class="form-control" placeholder="Name" />
+            <span asp-validation-for="Name" class="text-danger d-block"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Description" class="form-control" placeholder="Description" />
+            <span asp-validation-for="Description" class="text-danger d-block"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="MinAge" class="form-control" placeholder="MinAge" />
+            <span asp-validation-for="MinAge" class="text-danger d-block"></span>
+        </div>
+        <div class="form-group mt-3">
+            <input asp-for="Duration" class="form-control" placeholder="Duration" />
+            <span asp-validation-for="Duration" class="text-danger d-block"></span>
+        </div>
+        <div class="form-group mt-3">
+            <lable>Resolution</lable>
+            <select asp-for="ResolutionId" asp-items="ViewBag.resolutions" class="animated-input"></select>
+        </div>
+        <div class="form-group mt-3">
+            <lable>Category</lable>
+            <select asp-for="CategoryId" asp-items="ViewBag.categories" class="animated-input"></select>
+        </div>
+        <div class="form-group mt-3">
+            <lable>Topics: </lable>
+            <div class="row">
+                @for (var index = 0; index < @Model.CheckBoxes.Count; index++)
+                {
+                    <div class="container">
+                        <input type="checkbox" asp-for="@Model.CheckBoxes[index].IsChecked" class="form-check-input" />
+                        <label class="form-check-label" asp-for="@Model.CheckBoxes[index].IsChecked">
+                            @Model.CheckBoxes[index].LabelName
+                        </label>
+                    </div>
+                    <input type="hidden" asp-for="@Model.CheckBoxes[index].Id" />
+                    <input type="hidden" asp-for="@Model.CheckBoxes[index].LabelName" />
+                }
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <lable>Images</lable>
+            <input asp-for="Images" class="form-control" />
+            <span asp-validation-for="Images" class="text-danger d-block"></span>
+        </div>
+        <button type="submit" class="btn btn-success btn-rounded btn-fw mt-3">Submit</button>
+        <a asp-action="Index" class="btn btn-primary btn-rounded btn-fw mt-3">Back</a>
+    </form>
+</div>
+
+@section AdminScripts{
+    <partial name="_ValidationScriptsPartial" />
 }
 

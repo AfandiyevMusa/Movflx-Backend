@@ -1,7 +1,7 @@
-﻿@model List<MovieVM>
+﻿@model List<EpisodeVM>
 
 @{
-    ViewData["Title"] = "Movie View";
+    ViewData["Title"] = "Episodes View";
 }
 
 
@@ -13,7 +13,7 @@
 </style>
 
 <div class="container my-3">
-    <h2 class="text-center">Products</h2>
+    <h2 class="text-center">Episodes</h2>
     <div class="create-btn ">
         <a asp-action="Create" class="btn btn-success btn-rounded btn-fw">Create</a>
     </div>
@@ -22,22 +22,13 @@
             <thead>
                 <tr>
                     <th>
-                        Image
-                    </th>
-                    <th>
                         Name
                     </th>
                     <th>
-                        Duration
+                        Film Name
                     </th>
                     <th>
-                        Minimum Age
-                    </th>
-                    <th>
-                        Resolution
-                    </th>
-                    <th>
-                        Category
+                        Season
                     </th>
                     <th>
                         Options
@@ -45,31 +36,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var movie in Model)
+                @foreach (var episode in Model)
                 {
                     <tr class="parent">
                         <td>
-                            <img src="~/assets/img/poster/@movie.Image" style="width:100px; height:100px" />
+                            @episode.Name
                         </td>
                         <td>
-                            @movie.Name
+                            @episode.Film
                         </td>
                         <td>
-                            @movie.Duration
+                            @episode.Season
                         </td>
                         <td>
-                            @movie.MinAge
-                        </td>
-                        <td>
-                            @movie.Resolution
-                        </td>
-                        <td>
-                            @movie.Category
-                        </td>
-                        <td>
-                            <a asp-action="Detail" asp-route-id="@movie.Id" class="btn btn-primary btn-rounded btn-fw">Detail</a>
-                            <a asp-action="Edit" asp-route-id="@movie.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
-                            <button type="submit" data-id="@movie.Id" id="delete" class="btn btn-danger btn-rounded btn-fw">Delete</button>
+                            <a asp-action="Detail" asp-route-id="@episode.Id" class="btn btn-primary btn-rounded btn-fw">Detail</a>
+                            <a asp-action="Edit" asp-route-id="@episode.Id" class="btn btn-warning btn-rounded btn-fw">Edit</a>
+                            <button type="submit" data-id="@episode.Id" id="delete" class="btn btn-danger btn-rounded btn-fw">Delete</button>
                         </td>
                     </tr>
                 }
@@ -98,5 +80,5 @@
 
 
 @section AdminScripts{
-    <script src="~/admin/assets/js/movie.js"></script>
+    <script src="~/admin/assets/js/episode.js"></script>
 }

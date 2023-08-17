@@ -1,0 +1,53 @@
+﻿@model EpisodeDetailVM
+
+@{
+    ViewData["Title"] = "Episode Detail View";
+}
+
+
+<style>
+    .active-paginate {
+        background-color: #0884ec !important;
+        color: white !important;
+    }
+</style>
+
+<div class="container my-3">
+    <h2 class="text-center">Advertising</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Film Name
+                    </th>
+                    <th>
+                        Season
+                    </th>
+                    <th>
+                        CreatedDate
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="parent">
+                    <td>
+                        @Model.Name
+                    </td>
+                    <td>
+                        @Model.Film
+                    </td>
+                    <td>
+                        @Model.Season
+                    </td>
+                    <td>
+                        @Model.CreatedDate
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

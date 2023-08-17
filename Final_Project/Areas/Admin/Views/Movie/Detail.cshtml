@@ -1,6 +1,158 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model MovieDetailVM
+
 @{
+    ViewData["Title"] = "Movie Detail";
 }
 
+<style>
+    body {
+        margin-top: 150px;
+    }
+
+    .card {
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    }
+
+    .product {
+        background-color: #eee;
+    }
+
+    .brand {
+        font-size: 13px;
+    }
+
+    .act-price {
+        color: red;
+        font-weight: 700;
+    }
+
+    .dis-price {
+        text-decoration: line-through;
+    }
+
+    .about {
+        font-size: 14px;
+    }
+
+    .color {
+        margin-bottom: 10px;
+    }
+
+    label.radio {
+        cursor: pointer;
+    }
+
+        label.radio input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        label.radio span {
+            padding: 2px 9px;
+            border: 2px solid #ff0000;
+            display: inline-block;
+            color: #ff0000;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        label.radio input:checked + span {
+            border-color: #ff0000;
+            background-color: #ff0000;
+            color: #fff;
+        }
+
+    .btn-danger {
+        background-color: #ff0000 !important;
+        border-color: #ff0000 !important;
+    }
+
+        .btn-danger:hover {
+            background-color: #da0606 !important;
+            border-color: #da0606 !important;
+        }
+
+        .btn-danger:focus {
+            box-shadow: none;
+        }
+
+    .cart i {
+        margin-right: 10px;
+    }
+</style>
+
+
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="images p-3">
+                            <div class="text-center p-4">
+                                <img id="main-image" src="~/assets/img/poster/@Model.Images.FirstOrDefault().Image" style="width:250px; height:250px;" />
+                            </div>
+                            <div class="thumbnail text-center">
+                                @foreach (var eachImage in Model.Images)
+                                {
+                                    <img style="cursor: pointer; width: 100px; height: 100px" onclick="change_image(this)" src="~/assets/img/poster/@eachImage.Image">
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="product p-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i> <a class="ml-1" asp-action="Index" style=" text-decoration: none; margin-left: 10px; }">Back</a> </div> <i class="fa fa-shopping-cart text-muted"></i>
+                            </div>
+                            <div class="mt-4 mb-3">
+                                <div class="upperPart" style=" display: flex; justify-content: space-between;">
+                                    <div class="words">
+                                        <span class="text-uppercase text-muted brand" style="display:block;">@Model.CreatedDate</span>
+
+                                    </div>
+                                    <div class="stock" style=" margin-right: 50px;">
+                                        <button type="button" class="btn btn-outline-success">@Model.Duration</button>
+                                    </div>
+                                    <div class="stock" style=" margin-right: 50px;">
+                                        <button type="button" class="btn btn-outline-success">@Model.MinAge +</button>
+                                    </div>
+                                    <div class="stock" style=" margin-right: 50px;">
+                                        <button type="button" class="btn btn-outline-success">@Model.Resolution</button>
+                                    </div>
+                                </div>
+                                <h5 class="text-uppercase">@Model.Name -- @Model.Category</h5>
+                            </div>
+                            <p class="about">@Model.Description</p>
+                            <div class="sizes mt-5">
+                                <h6 class="text-uppercase">Topics</h6>
+                                @foreach (var eachTopic in Model.FilmTopics)
+                                {
+                                    <label class="radio">
+                                        <input type="radio" name="size" value="S">
+                                        <span style=" color: black; border-color: black; width: 75px; height: 30px; font-size: 11px;">@eachTopic.Topic.Name</span>
+                                    </label>
+                                }
+                            </div>
+                            @*<div class="cart mt-4 align-items-center"> <button class="btn btn-danger text-uppercase mr-2 px-4">Add to cart</button> <i class="fa fa-heart text-muted"></i> <i class="fa fa-share-alt text-muted"></i> </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>function change_image(image) {
+
+        var container = document.getElementById("main-image");
+
+        container.src = image.src;
+    }
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+    });</script>

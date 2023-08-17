@@ -42,7 +42,7 @@ builder.Services.AddScoped<ILayoutService, LayoutService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<ICategoryServices, CategoryService>();
-builder.Services.AddScoped<IEpisodeService, EpisodeService>();
+//builder.Services.AddScoped<IEpisodeService, EpisodeService>();
 builder.Services.AddScoped<IFilmService, FilmService>();
 builder.Services.AddScoped<IPricingService, PricingService>();
 builder.Services.AddScoped<IResolutionService, ResolutionService>();
@@ -54,6 +54,7 @@ builder.Services.AddScoped<ITopicService, TopicService>();
 builder.Services.AddScoped<IVideoService, VideoService>();
 builder.Services.AddScoped<IServiceOptionService, ServiceOptionService>();
 builder.Services.AddScoped<IBlogAuthorService, BlogAuthorService>();
+builder.Services.AddScoped<IFilmTopicService, FilmTopicService>();
 
 var app = builder.Build();
 

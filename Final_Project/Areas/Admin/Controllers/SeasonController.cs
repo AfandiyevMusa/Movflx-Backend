@@ -141,7 +141,7 @@ namespace Final_Project.Areas.Admin.Controllers
 
         private async Task<SelectList> GetFilms()
         {
-            List<Film> films = await _filmService.GetAllFilms();
+            List<Film> films = await _filmService.GetAllFilmsAsync();
             return new SelectList(films, "Id", "Name");
         }
 

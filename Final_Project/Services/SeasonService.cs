@@ -21,7 +21,7 @@ namespace Final_Project.Services
 
         public async Task<List<Season>> GetAllSeasons() => await _context.Seasons.Include(m=>m.Film).Include(m=>m.Episodes).Where(m => !m.SoftDelete).ToListAsync();
 
-        public async Task<Season> GetByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).FirstOrDefaultAsync(m => m.Id == id);
+        public async Task<Season> GetByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m=>m.Episodes).FirstOrDefaultAsync(m => m.Id == id);
 
         public SeasonDetailVM GetMappedDatasAsync(Season dbSeason)
         {
@@ -58,7 +58,7 @@ namespace Final_Project.Services
 
         public async Task<Season> GetWithIncludesAsync(int id)
         {
-            return await _context.Seasons.Where(m => m.Id == id).Include(m => m.FilmId).FirstOrDefaultAsync();
+            return await _context.Seasons.Where(m => m.Id == id).Include(m => m.Film).Include(m=>m.Episodes).FirstOrDefaultAsync();
         }
 
         public async Task EditAsync(int seasonId, SeasonEditVM model)

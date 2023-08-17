@@ -29,7 +29,7 @@ namespace Final_Project.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Film> films = await _filmService.GetAllFilms();
+            List<Film> films = await _filmService.GetAllFilmsAsync();
             List<Topic> topics = await _topicService.GetAllTopics();
 
             MovieDetailVM movieDetail = new()
