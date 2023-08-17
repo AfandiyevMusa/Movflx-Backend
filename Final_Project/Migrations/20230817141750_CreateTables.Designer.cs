@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230731151322_CreateTablesAgain")]
-    partial class CreateTablesAgain
+    [Migration("20230817141750_CreateTables")]
+    partial class CreateTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -256,7 +256,7 @@ namespace Final_Project.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SeasonId")
+                    b.Property<int?>("SeasonId")
                         .HasColumnType("int");
 
                     b.Property<bool>("SoftDelete")
@@ -827,18 +827,14 @@ namespace Final_Project.Migrations
                     b.HasOne("Final_Project.Models.Film", "Film")
                         .WithMany("Episodes")
                         .HasForeignKey("FilmId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Final_Project.Models.Season", "Season")
-                        .WithMany("Episodes")
-                        .HasForeignKey("SeasonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Film");
+                    b.HasOne("Final_Project.Models.Season", null)
+                        .WithMany("Episodes")
+                        .HasForeignKey("SeasonId");
 
-                    b.Navigation("Season");
+                    b.Navigation("Film");
                 });
 
             modelBuilder.Entity("Final_Project.Models.Film", b =>

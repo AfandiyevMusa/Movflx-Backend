@@ -46,10 +46,10 @@ namespace Final_Project.Data
             //.WithOne(e => e.Film)
             //.OnDelete(DeleteBehavior.Restrict);
 
-            //modelBuilder.Entity<Season>()
-            //.HasMany(e => e.Episodes)
-            //.WithOne(e => e.Season)
-            //.OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Season>()
+            .HasMany(e => e.Episodes)
+            .WithOne(e => e.Season)
+            .OnDelete(DeleteBehavior.Restrict);
         }
 
     }

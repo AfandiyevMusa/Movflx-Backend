@@ -825,13 +825,13 @@ namespace Final_Project.Migrations
                     b.HasOne("Final_Project.Models.Film", "Film")
                         .WithMany("Episodes")
                         .HasForeignKey("FilmId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Final_Project.Models.Season", "Season")
                         .WithMany("Episodes")
                         .HasForeignKey("SeasonId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Film");

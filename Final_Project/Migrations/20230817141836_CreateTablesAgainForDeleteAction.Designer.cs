@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final_Project.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230731151231_CreateTables")]
-    partial class CreateTables
+    [Migration("20230817141836_CreateTablesAgainForDeleteAction")]
+    partial class CreateTablesAgainForDeleteAction
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -249,7 +249,7 @@ namespace Final_Project.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("FilmId")
+                    b.Property<int>("FilmId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -824,15 +824,19 @@ namespace Final_Project.Migrations
 
             modelBuilder.Entity("Final_Project.Models.Episode", b =>
                 {
-                    b.HasOne("Final_Project.Models.Film", null)
+                    b.HasOne("Final_Project.Models.Film", "Film")
                         .WithMany("Episodes")
-                        .HasForeignKey("FilmId");
+                        .HasForeignKey("FilmId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Final_Project.Models.Season", "Season")
                         .WithMany("Episodes")
                         .HasForeignKey("SeasonId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Film");
 
                     b.Navigation("Season");
                 });

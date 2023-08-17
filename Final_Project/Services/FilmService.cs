@@ -109,7 +109,6 @@ namespace Final_Project.Services
                     await _filmTopicService.CreateTopicAsync(film, item.Id);
                 }
             }
-
         }
 
         public async Task EditAsync(int filmId, MovieEditVM model)
@@ -135,25 +134,33 @@ namespace Final_Project.Services
             film.MinAge = model.MinAge;
             film.Duration = model.Duration;
             film.Description = model.Description;
-            film.Images = images;
 
             var currentTopics = await _filmTopicService.FindTopicsByConditionAsync(m => m.FilmId == film.Id);
 
-            var updatedTopicIds = model.CheckBoxes.Where(c => c.IsChecked).Select(c => c.Id);
+            //var updatedTopicIds = model.CheckBoxes.Where(c => c.IsChecked).Select(c => c.Id);
 
-            var topicsToRemove = currentTopics.Where(t => !updatedTopicIds.Contains(t.FilmId));
+            var list = model.CheckBoxes.Where(c => c.IsChecked).ToList();
 
-            var topicsToAdd = updatedTopicIds.Where(id => !currentTopics.Any(t => t.FilmId == id))
-                                        .Select(id => new FilmTopic { FilmId = film.Id, TopicId = id });
+            List<int> updatedTopicIds = new List<int>();
 
-            foreach (var topicToRemove in topicsToAdd)
+            foreach (var item in list)
             {
-                await _filmTopicService.RemoveTopicFromProductsAsync(film, topicToRemove.FilmId);
+                updatedTopicIds.Add(item.Id);
             }
 
-            foreach (var topicToAdd in topicsToAdd)
+            var topicsToRemove = currentTopics.Where(t => !updatedTopicIds.Contains(t.TopicId));
+
+            var topicsToAdd = updatedTopicIds.Where(id => !currentTopics.Any(t => t.TopicId == id))
+                                        .Select(id => new FilmTopic { FilmId = film.Id, TopicId = id });
+
+            //foreach (var idToAdd in updatedTopicIds)
+            //{
+            //    await _filmTopicService.RemoveTopicFromProductsAsync(film, idToAdd);
+            //}
+
+            foreach (var idToAdd in updatedTopicIds)
             {
-                await _filmTopicService.IncludeTopicsToProductAsync(film, topicToAdd.FilmId);
+                await _filmTopicService.IncludeTopicsToProductAsync(film, idToAdd);
             }
 
             await _context.FilmImages.AddRangeAsync(images);

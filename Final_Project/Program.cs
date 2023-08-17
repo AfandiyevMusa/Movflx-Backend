@@ -42,7 +42,7 @@ builder.Services.AddScoped<ILayoutService, LayoutService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<ICategoryServices, CategoryService>();
-//builder.Services.AddScoped<IEpisodeService, EpisodeService>();
+builder.Services.AddScoped<IEpisodeService, EpisodeService>();
 builder.Services.AddScoped<IFilmService, FilmService>();
 builder.Services.AddScoped<IPricingService, PricingService>();
 builder.Services.AddScoped<IResolutionService, ResolutionService>();

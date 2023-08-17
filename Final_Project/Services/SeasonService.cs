@@ -19,7 +19,7 @@ namespace Final_Project.Services
             _env = env;
         }
 
-        public async Task<List<Season>> GetAllSeasons() => await _context.Seasons.Include(m=>m.Film).Include(m=>m.Episodes).Where(m => !m.SoftDelete).ToListAsync();
+        public async Task<List<Season>> GetAllSeasons() => await _context.Seasons.Where(m => !m.SoftDelete).ToListAsync();
 
         public async Task<Season> GetByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m=>m.Episodes).FirstOrDefaultAsync(m => m.Id == id);
 

@@ -4,16 +4,16 @@
 
 namespace Final_Project.Migrations
 {
-    public partial class CreateTablesAgain : Migration
+    public partial class CreateTablesAgainForDeleteAction : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Episodes_Films_FilmId",
+                name: "FK_Episodes_Seasons_SeasonId",
                 table: "Episodes");
 
             migrationBuilder.AlterColumn<int>(
-                name: "FilmId",
+                name: "SeasonId",
                 table: "Episodes",
                 type: "int",
                 nullable: false,
@@ -23,10 +23,10 @@ namespace Final_Project.Migrations
                 oldNullable: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Episodes_Films_FilmId",
+                name: "FK_Episodes_Seasons_SeasonId",
                 table: "Episodes",
-                column: "FilmId",
-                principalTable: "Films",
+                column: "SeasonId",
+                principalTable: "Seasons",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Restrict);
         }
@@ -34,11 +34,11 @@ namespace Final_Project.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Episodes_Films_FilmId",
+                name: "FK_Episodes_Seasons_SeasonId",
                 table: "Episodes");
 
             migrationBuilder.AlterColumn<int>(
-                name: "FilmId",
+                name: "SeasonId",
                 table: "Episodes",
                 type: "int",
                 nullable: true,
@@ -46,10 +46,10 @@ namespace Final_Project.Migrations
                 oldType: "int");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Episodes_Films_FilmId",
+                name: "FK_Episodes_Seasons_SeasonId",
                 table: "Episodes",
-                column: "FilmId",
-                principalTable: "Films",
+                column: "SeasonId",
+                principalTable: "Seasons",
                 principalColumn: "Id");
         }
     }

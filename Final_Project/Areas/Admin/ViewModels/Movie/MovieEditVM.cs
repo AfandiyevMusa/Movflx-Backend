@@ -19,6 +19,7 @@ namespace Final_Project.Areas.Admin.ViewModels.Movie
         public int ResolutionId { get; set; }
         public int CategoryId { get; set; }
         public ICollection<FilmImage> Images { get; set; }
+        [Required]
         public List<IFormFile>? NewImage { get; set; }
         public List<CheckBoxVM> CheckBoxes { get; set; }
     }

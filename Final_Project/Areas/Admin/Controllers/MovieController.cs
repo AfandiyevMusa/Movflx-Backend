@@ -63,7 +63,7 @@ namespace Final_Project.Areas.Admin.Controllers
                     Duration = eachFilm.Duration,
                     Resolution = eachFilm.Resolution.ResolutionP,
                     Category = eachFilm.Category.Name,
-                    Image = eachFilm.Images.FirstOrDefault().Image
+                    Image = eachFilm.Images.FirstOrDefault()?.Image
                 };
                 movieList.Add(model);
             }
@@ -170,7 +170,7 @@ namespace Final_Project.Areas.Admin.Controllers
                         }
                     }
                 }
-                checkBoxVMs.Add(new CheckBoxVM { Id = topic.Id, LabelName = topic.Name, IsChecked = isChecked });
+            checkBoxVMs.Add(new CheckBoxVM { Id = topic.Id, LabelName = topic.Name, IsChecked = isChecked });
             }
 
             MovieEditVM model = new()
@@ -181,7 +181,8 @@ namespace Final_Project.Areas.Admin.Controllers
                 MinAge = film.MinAge,
                 Duration = film.Duration,
                 ResolutionId = film.ResolutionId,
-                Images = film.Images
+                Images = film.Images,
+                CheckBoxes = checkBoxVMs.ToList()
             };
 
             return View(model);
@@ -196,7 +197,7 @@ namespace Final_Project.Areas.Admin.Controllers
             var movie = await _filmService.GetByIdAsync(id);
             if (movie is null) return NotFound();
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 request.Images = movie.Images.ToList();
                 return View();
@@ -213,8 +214,7 @@ namespace Final_Project.Areas.Admin.Controllers
                         return View();
                     }
 
-
-                    if (item.CheckFileSize(200))
+                    if (!item.CheckFileSize(200))
                     {
                         ModelState.AddModelError("NewImages", "Image size must be max 200 KB");
                         request.Images = movie.Images.ToList();
@@ -224,8 +224,6 @@ namespace Final_Project.Areas.Admin.Controllers
             }
 
             await _filmService.EditAsync(movie.Id, request);
-
-
 
             return RedirectToAction(nameof(Index));
         }

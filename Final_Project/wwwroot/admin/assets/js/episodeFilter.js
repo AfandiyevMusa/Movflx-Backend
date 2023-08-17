@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    console.log("hello");
     getSeasonByFilmId();
 })
 $("#filmId").change(function () {

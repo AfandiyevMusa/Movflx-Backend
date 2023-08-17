@@ -33,99 +33,6 @@ namespace Final_Project.Controllers
             _roleManager = roleManager;
         }
 
-        //[HttpGet]
-        //public IActionResult SignUp()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> SignUp(RegisterVM request)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(request);
-        //    }
-
-        //    AppUser user = new()
-        //    {
-        //        FullName = request.FullName,
-        //        UserName = request.UserName,
-        //        Email = request.Email
-        //    };
-
-        //    var result = await _userManager.CreateAsync(user, request.Password);
-        //    if (!result.Succeeded)
-        //    {
-        //        foreach (var error in result.Errors)
-        //        {
-        //            ModelState.AddModelError(string.Empty, error.Description);
-        //        }
-
-        //        return View(request);
-        //    }
-
-        //    await _signInManager.SignInAsync(user, false);
-
-        //    return RedirectToAction("Index", "Home");
-        //}
-
-        //[HttpGet]
-        //public IActionResult SignIn()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[AutoValidateAntiforgeryToken]
-        //public async Task<IActionResult> SignIn(LoginVM request)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(request);
-        //    }
-
-        //    AppUser user = await _userManager.FindByEmailAsync(request.EmailOrUsername);
-
-        //    if (user == null)
-        //    {
-        //        user = await _userManager.FindByNameAsync(request.EmailOrUsername);
-        //    }
-
-        //    if (user == null)
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Email or Password is wrong!");
-        //        return View(request);
-        //    }
-
-        //    PasswordVerificationResult comparedPassword = _userManager.PasswordHasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
-
-        //    if (comparedPassword.ToString() == "Failed")
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Email or Password is wrong!");
-        //        return View(request);
-        //    }
-
-        //    var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
-
-        //    if (result.Succeeded)
-        //    {
-        //        ModelState.AddModelError(string.Empty, "Please, confirm your account!");
-        //        return View(request);
-        //    }
-
-        //    //await _signInManager.SignInAsync(user, false);
-        //    return RedirectToAction("Index", "Home");
-        //}
-
-
-        //[HttpGet]
-        //public async Task<IActionResult> Logout()
-        //{
-        //    await _signInManager.SignOutAsync();
-        //    return RedirectToAction("Index", "Home");
-        //}
         [HttpGet]
         public IActionResult SignIn()
         {
@@ -207,7 +114,7 @@ namespace Final_Project.Controllers
                 return View(request);
             }
 
-            await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
+            await _userManager.AddToRoleAsync(user, Roles.Member.ToString());
 
             string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 

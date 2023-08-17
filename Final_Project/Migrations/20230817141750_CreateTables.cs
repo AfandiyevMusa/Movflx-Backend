@@ -529,8 +529,8 @@ namespace Final_Project.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SeasonId = table.Column<int>(type: "int", nullable: false),
-                    FilmId = table.Column<int>(type: "int", nullable: true),
+                    FilmId = table.Column<int>(type: "int", nullable: false),
+                    SeasonId = table.Column<int>(type: "int", nullable: true),
                     SoftDelete = table.Column<bool>(type: "bit", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -541,13 +541,13 @@ namespace Final_Project.Migrations
                         name: "FK_Episodes_Films_FilmId",
                         column: x => x.FilmId,
                         principalTable: "Films",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Episodes_Seasons_SeasonId",
                         column: x => x.SeasonId,
                         principalTable: "Seasons",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
