@@ -6,7 +6,7 @@ namespace Final_Project.Services.Interfaces
 {
 	public interface IServiceOptionService
 	{
-        Task<List<ServiceOptions>> GetAllCities();
+        Task<List<ServiceOptions>> GetAllOptions();
         Task<List<ServiceOptions>> GetAll();
         Task<ServiceOptions> GetByIdAsync(int? id);
         ServiceOptionDetailVM GetMappedDatasAsync(ServiceOptions dbServiceOptions);

@@ -13,7 +13,7 @@ namespace Final_Project.Data
         {
         }
 
-        public DbSet<Setting> Settings { get; set; }
+        //public DbSet<Setting> Settings { get; set; }
 
         public DbSet<Pricing> Pricings { get; set; }
         public DbSet<VideoQuality> VideoQualities { get; set; }

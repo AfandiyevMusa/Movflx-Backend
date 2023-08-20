@@ -20,7 +20,7 @@ namespace Final_Project.Areas.Admin.Controllers
     public class MovieController : Controller
     {
         private readonly IFilmService _filmService;
-        private readonly ILayoutService _layoutService;
+        //private readonly ILayoutService _layoutService;
         private readonly ICategoryServices _categoryServices;
         private readonly ITopicService _topicService;
         private readonly IResolutionService _resolutionService;
@@ -31,13 +31,13 @@ namespace Final_Project.Areas.Admin.Controllers
                                  ICategoryServices categoryService,
                                  IWebHostEnvironment env,
                                  ITopicService topicService,
-                                 ILayoutService layoutService,
+                                 //ILayoutService layoutService,
                                  IResolutionService resolutionService,
                                  AppDbContext context)
         {
             _filmService = filmService;
             _categoryServices = categoryService;
-            _layoutService = layoutService;
+            //_layoutService = layoutService;
             _topicService = topicService;
             _resolutionService = resolutionService;
             _env = env;

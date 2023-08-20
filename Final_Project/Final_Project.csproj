@@ -25,7 +25,6 @@
     <None Remove="Responses\" />
     <None Remove="Services\" />
     <None Remove="Services\Interfaces\" />
-    <None Remove="ViewComponents\" />
     <None Remove="ViewModels\" />
     <None Remove="ViewModels\Account\" />
     <None Remove="Areas\Admin\Views\Dashboard\" />
@@ -67,6 +66,7 @@
     <None Remove="Areas\Admin\Views\Season\" />
     <None Remove="Areas\Admin\ViewModels\Episode\" />
     <None Remove="Areas\Admin\Views\Episode\" />
+    <None Remove="ViewComponents\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -87,7 +87,6 @@
     <Folder Include="Responses\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
-    <Folder Include="ViewComponents\" />
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Account\" />
     <Folder Include="Areas\Admin\Views\Dashboard\" />
@@ -128,6 +127,7 @@
     <Folder Include="Areas\Admin\Views\Season\" />
     <Folder Include="Areas\Admin\ViewModels\Episode\" />
     <Folder Include="Areas\Admin\Views\Episode\" />
+    <Folder Include="ViewComponents\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\" />

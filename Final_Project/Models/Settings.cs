@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Final_Project.Models
 {
-	public class Setting
+	public class Settings
 	{
         public int Id { get; set; }
         public string Key { get; set; }

@@ -19,7 +19,7 @@ namespace Final_Project.Services
             _env = env;
         }
 
-        public async Task<List<ServiceOptions>> GetAllCities() => await _context.ServiceOptions.Where(m => !m.SoftDelete).ToListAsync();
+        public async Task<List<ServiceOptions>> GetAllOptions() => await _context.ServiceOptions.Where(m => !m.SoftDelete).ToListAsync();
 
         public async Task<List<ServiceOptions>> GetAll() => await _context.ServiceOptions.ToListAsync();
 

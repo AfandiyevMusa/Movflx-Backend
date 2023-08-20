@@ -23,6 +23,8 @@ namespace Final_Project.Services
 
         public async Task<Tag> GetByIdAsync(int? id) => await _context.Tags.Include(m => m.BlogTags).FirstOrDefaultAsync(m => m.Id == id);
 
+        public async Task<List<Tag>> GetAllById(int? id) => await _context.Tags.Include(m => m.BlogTags).Where(m => m.Id == id).ToListAsync();
+
         public TagDetailVM GetMappedDatasAsync(Tag dbTag)
         {
             TagDetailVM model = new()

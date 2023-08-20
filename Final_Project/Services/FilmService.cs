@@ -25,6 +25,8 @@ namespace Final_Project.Services
 
         public async Task<List<Film>> GetAllFilmsAsync() => await _context.Films.Include(m=>m.Resolution).Include(m=>m.FilmTopics).Include(m=>m.Category).Include(m=>m.Images).Where(m => !m.SoftDelete).ToListAsync();
 
+        public async Task<List<Film>> GetAllFilteredFilmsAsync() => await _context.Films.Include(m => m.Resolution).Include(m => m.FilmTopics).Include(m => m.Category).Include(m => m.Images).Where(m => !m.SoftDelete).Where(m=>m.Name != "Movie").ToListAsync();
+
         public async Task<Film> GetByIdAsync(int? id) => await _context.Films.Include(m => m.Resolution).Include(m => m.FilmTopics).ThenInclude(m => m.Topic).Include(m=>m.Category).Include(m=>m.Images).FirstOrDefaultAsync(m => m.Id == id);
 
         public async Task<Film> GetByIdWithAllIncludesAsync(int? id)
@@ -38,7 +40,6 @@ namespace Final_Project.Services
                                            Include(m => m.Seasons).
                                            FirstOrDefaultAsync(m => m.Id == id);
         }
-
 
         public MovieDetailVM GetMappedData(Film film)
         {

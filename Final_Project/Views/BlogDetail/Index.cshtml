@@ -1,8 +1,10 @@
-﻿@{
+﻿@model BlogDetailVM
+
+@{
     ViewData["Title"] = "Blog Detail Page";
 }
 
-<section class="breadcrumb-area breadcrumb-bg" data-background="assets/img/bg/breadcrumb_bg.jpg">
+<section class="breadcrumb-area breadcrumb-bg" data-background="~/assets/img/bg/breadcrumb_bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -20,32 +22,22 @@
     </div>
 </section>
 
-<section class="blog-details-area blog-bg" data-background="assets/img/bg/blog_bg.jpg">
+<section class="blog-details-area blog-bg" data-background="~/assets/img/bg/blog_bg.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog-post-item blog-details-wrap">
                     <div class="blog-post-thumb">
-                        <a href="~/blog-details.html"><img src="~/assets/img/blog/blog_thumb01.jpg" alt=""></a>
+                        <a href="~/blog-details.html"><img src="~/assets/img/blog/@Model.Blogs.BlogImages.FirstOrDefault()?.Image" alt=""></a>
                     </div>
                     <div class="blog-post-content">
                         <div class="blog-details-top-meta">
-                            <span class="user"><i class="far fa-user"></i> by <a href="~/#">Admin</a></span>
-                            <span class="date"><i class="far fa-clock"></i> 10 Mar 2021</span>
+                            <span class="user"><i class="far fa-user"></i> by <a href="~/#">@Model.Blogs.BlogAuthor.FullName</a></span>
+                            <span class="date"><i class="far fa-clock"></i> @Model.Blogs.CreatedDate.ToString("MM/dd/yyyy")</span>
                         </div>
-                        <h2 class="title">Your Free Movie Streaming Purposes</h2>
+                        <h2 class="title">@Model.Blogs.Title</h2>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typetting industry. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                            book. It has survived not only five centuies, but also the leap into electronic typesetting, remaining essentially
-                            unchanged. It was populrised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                            recently .
-                        </p>
-                        <p>
-                            Printing and typetting industry. Lorem Ipsum has been the industry's standrd dummy text ever since the, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuies, but
-                            also the leap into electronic typesetting, remaining essentially unched. It was populrised in the 1960s with the release
-                            of Letraset sheets containing .
+                            @Model.Blogs.Description
                         </p>
                         <blockquote>
                             <i class="fas fa-quote-right"></i>
@@ -54,30 +46,30 @@
                         </blockquote>
                         <div class="blog-img-wrap">
                             <div class="row">
-                                <div class="col-sm-6">
-                                    <img src="~/assets/img/blog/blog_details_img01.jpg" alt="">
-                                </div>
-                                <div class="col-sm-6">
-                                    <img src="~/assets/img/blog/blog_details_img02.jpg" alt="">
-                                </div>
+                                @foreach (var eachImage in Model.Blogs.BlogImages)
+                                {
+                                    <div class="col-sm-6">
+                                        <img src="~/assets/img/blog/@eachImage.Image" alt="">
+                                    </div>
+                                }
                             </div>
                         </div>
                         <p>
-                            Lorem Ipsum is simply dummy text of the printing and typetting industry. Lorem Ipsum has been the industry's standard
-                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
-                            book. It has survived not only five centuies.
+                            @Model.Blogs.Description
                         </p>
                         <p>
-                            Printing and typetting industry. Lorem Ipsum has been the industry's standrd dummy text ever since the, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuies, but
-                            also the leap into electronic typesetting, remaining essentially unched. It was populrised in the 1960s with the release
-                            of Letraset sheets containing .
+                            @Model.Blogs.Description
                         </p>
                         <div class="blog-post-meta">
                             <div class="blog-details-tags">
                                 <ul>
                                     <li><i class="fas fa-tags"></i> <span>Tags :</span></li>
-                                    <li><a href="~/#">Movies ,</a> <a href="~/#">Creative ,</a> <a href="~/#">News ,</a> <a href="~/#">English</a></li>
+                                    @foreach (var eachTag in Model.Tags)
+                                    {
+                                        <li>
+                                            <a href="~/#">@eachTag.Name ,</a>
+                                        </li>
+                                    }
                                 </ul>
                             </div>
                             <div class="blog-post-share">

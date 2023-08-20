@@ -1,4 +1,6 @@
-﻿@{
+﻿@model HomeVM
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -45,332 +47,51 @@
             <div class="col-lg-6">
                 <div class="ucm-nav-wrap">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="tvShow-tab" data-toggle="tab" href="~/#tvShow" role="tab" aria-controls="tvShow" aria-selected="true">TV Shows</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="movies-tab" data-toggle="tab" href="~/#movies" role="tab" aria-controls="movies" aria-selected="false">Movies</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="anime-tab" data-toggle="tab" href="~/#anime" role="tab" aria-controls="anime" aria-selected="false">Anime</a>
-                        </li>
+                        @foreach (var eachCategory in Model.Categories)
+                        {
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="@eachCategory.Name-tab" data-id="@eachCategory.Name" data-toggle="tab" href="~/#tvShow" role="tab" aria-controls="tvShow" aria-selected="true">@eachCategory.Name</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
         </div>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tvShow" role="tabpanel" aria-labelledby="tvShow-tab">
-                <div class="ucm-active owl-carousel">
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster01.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">Women's Day</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster02.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Perfect Match</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">4k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
+            @foreach (var item in Model.Categories)
+                {
+                    <div class="tab-pane fade show active" id="@item.Name" role="tabpanel" aria-labelledby="@item.Name-tab">
+                        <div class="ucm-active owl-carousel">
+                            @foreach (var movie in Model.Films)
+                                {
+                                    if(movie.Category.Name == item.Name)
+                                    {
+                                        <div class="movie-item mb-50" data-id="@movie.Category.Name">
+                                            <div class="movie-poster">
+                                                <a href="~/movieDetails.html"><img src="~/assets/img/poster/@movie.Images.FirstOrDefault().Image" alt=""></a>
+                                            </div>
+                                            <div class="movie-content">
+                                                <div class="top">
+                                                    <h5 class="title"><a href="~/movieDetails.html">@movie.Name</a></h5>
+                                                    <span class="date">@movie.CreatedDate.Year</span>
+                                                </div>
+                                                <div class="bottom">
+                                                    <ul>
+                                                        <li><span class="quality">@movie.Resolution.ResolutionP</span></li>
+                                                        <li>
+                                                            <span class="duration"><i class="far fa-clock"></i> @movie.Duration min</span>
+                                                            <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+                                }
                         </div>
                     </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster03.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Dog Woof</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster04.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Easy Reach</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">8k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster05.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Cooking</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="movies" role="tabpanel" aria-labelledby="movies-tab">
-                <div class="ucm-active owl-carousel">
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster05.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Cooking</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster06.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Hikers</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">4k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster07.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">Life Quotes</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster08.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Beachball</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">4k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster03.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Dog Woof</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="anime" role="tabpanel" aria-labelledby="anime-tab">
-                <div class="ucm-active owl-carousel">
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster01.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">Women's Day</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster02.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Perfect Match</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">4k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster03.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Dog Woof</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster04.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Easy Reach</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">8k</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="movie-item mb-50">
-                        <div class="movie-poster">
-                            <a href="~/movieDetails.html"><img src="~/assets/img/poster/ucm_poster05.jpg" alt=""></a>
-                        </div>
-                        <div class="movie-content">
-                            <div class="top">
-                                <h5 class="title"><a href="~/movieDetails.html">The Cooking</a></h5>
-                                <span class="date">2021</span>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li><span class="quality">hd</span></li>
-                                    <li>
-                                        <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                        <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
         </div>
     </div>
 </section>

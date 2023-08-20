@@ -17,25 +17,30 @@ namespace Final_Project.Controllers
         private readonly AppDbContext _context;
         private readonly IBlogService _blogService;
         private readonly ITagService _tagService;
+        private readonly ICategoryServices _categoryServices;
 
         public BlogController(AppDbContext context,
                               IBlogService blogService,
-                              ITagService tagService)
+                              ITagService tagService,
+                              ICategoryServices categoryServices)
         {
             _context = context;
             _blogService = blogService;
             _tagService = tagService;
+            _categoryServices = categoryServices;
         }
 
         public async Task<IActionResult> Index()
         {
             List<Blog> blogs = await _blogService.GetAllBlogs();
             List<Tag> tags = await _tagService.GetAllTags();
+            List<Category> categories = await _categoryServices.GetAllCategories();
 
             BlogVM blog = new()
             {
                 Blogs = blogs,
-                Tags = tags
+                Tags = tags,
+                Categories = categories
             };
 
             return View(blog);

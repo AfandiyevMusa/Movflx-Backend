@@ -7,6 +7,7 @@ namespace Final_Project.Services.Interfaces
 	public interface IFilmService
 	{
         Task<List<Film>> GetAllFilmsAsync();
+        Task<List<Film>> GetAllFilteredFilmsAsync();
         Task<Film> GetByIdAsync(int? id);
 
         Task<Film> GetWholeByIdAsync(int? id);

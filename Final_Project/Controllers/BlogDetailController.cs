@@ -27,18 +27,18 @@ namespace Final_Project.Controllers
             _tagService = tagService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            List<Blog> blogs = await _blogService.GetAllBlogs();
-            List<Tag> tags = await _tagService.GetAllTags();
+            Blog blogs = await _blogService.GetByIdAsync(id);
+            List<Tag> tags = await _tagService.GetAllById(id);
 
-            BlogVM blog = new()
+            BlogDetailVM blogDetailVM = new()
             {
                 Blogs = blogs,
                 Tags = tags
             };
 
-            return View(blog);
+            return View(blogDetailVM);
         }
     }
 }

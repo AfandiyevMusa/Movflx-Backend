@@ -8,7 +8,7 @@ namespace Final_Project.Services.Interfaces
 	public interface IFilmTopicService
 	{
         Task CreateTopicAsync(Film film, int topicId);
-        Task GetAllAsync();
+        Task<List<FilmTopic>> GetAllAsync();
         Task RemoveTopicFromProductsAsync(Film film, int topicId);
         Task<IEnumerable<FilmTopic>> FindTopicsByConditionAsync(Expression<Func<FilmTopic, bool>> expression);
         Task IncludeTopicsToProductAsync(Film film, int topicId);

@@ -21,7 +21,7 @@ namespace Final_Project.Areas.Admin.Controllers
     public class EpisodeController : Controller
     {
         private readonly IEpisodeService _episodeService;
-        private readonly ILayoutService _layoutService;
+        //private readonly ILayoutService _layoutService;
         private readonly IFilmService _filmService;
         private readonly ISeasonService _seasonService;
         private readonly IWebHostEnvironment _env;
@@ -31,14 +31,14 @@ namespace Final_Project.Areas.Admin.Controllers
                                  IFilmService filmService,
                                  ISeasonService seasonService,
                                  IWebHostEnvironment env,
-                                 ILayoutService layoutService,
+                                 //ILayoutService layoutService,
                                  AppDbContext context)
         {
             _episodeService = episodeService;
             _filmService = filmService;
             _env = env;
             _context = context;
-            _layoutService = layoutService;
+            //_layoutService = layoutService;
             _seasonService = seasonService;
         }
 

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model PricingVM
+
+@{
     ViewData["Title"] = "Pricing Page";
 }
 
@@ -32,72 +34,31 @@
         </div>
         <div class="pricing-box-wrap">
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="pricing-box-item mb-30">
-                        <div class="pricing-top">
-                            <h6>premium</h6>
-                            <div class="price">
-                                <h3>$7.99</h3>
-                                <span>Monthly</span>
+                @foreach (var eachPlan in Model.Pricings)
+                    {
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="pricing-box-item mb-30">
+                            <div class="pricing-top">
+                                <h6>@eachPlan.Name</h6>
+                                <div class="price">
+                                    <h3>$@eachPlan.Price</h3>
+                                    <span>@eachPlan.DatePlan</span>
+                                </div>
+                            </div>
+                            <div class="pricing-list">
+                                <ul>
+                                    <li class="quality"><i class="fas fa-check"></i> Video quality <span>@eachPlan.VideoQuality.Quality</span></li>
+                                    <li><i class="fas fa-check"></i> Resolution <span>@eachPlan.Resolution.ResolutionP</span></li>
+                                    <li><i class="fas fa-check"></i> Screens you can watch <span>@eachPlan.MultiplyWatching</span></li>
+                                    <li><i class="fas fa-check"></i> Cancel anytime</li>
+                                </ul>
+                            </div>
+                            <div class="pricing-btn">
+                                <a href="~/#" class="btn">Buy Now</a>
                             </div>
                         </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li class="quality"><i class="fas fa-check"></i> Video quality <span>Good</span></li>
-                                <li><i class="fas fa-check"></i> Resolution <span>480p</span></li>
-                                <li><i class="fas fa-check"></i> Screens you can watch <span>1</span></li>
-                                <li><i class="fas fa-check"></i> Cancel anytime</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn">
-                            <a href="~/#" class="btn">Buy Now</a>
-                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="pricing-box-item active mb-30">
-                        <div class="pricing-top">
-                            <h6>standard</h6>
-                            <div class="price">
-                                <h3>$9.99</h3>
-                                <span>Monthly</span>
-                            </div>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li class="quality"><i class="fas fa-check"></i> Video quality <span>Better</span></li>
-                                <li><i class="fas fa-check"></i> Resolution <span>1080p</span></li>
-                                <li><i class="fas fa-check"></i> Screens you can watch <span>2</span></li>
-                                <li><i class="fas fa-check"></i> Cancel anytime</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn">
-                            <a href="~/#" class="btn">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-8">
-                    <div class="pricing-box-item mb-30">
-                        <div class="pricing-top">
-                            <h6>premium</h6>
-                            <div class="price">
-                                <h3>$11.99</h3>
-                                <span>Monthly</span>
-                            </div>
-                        </div>
-                        <div class="pricing-list">
-                            <ul>
-                                <li class="quality"><i class="fas fa-check"></i> Video quality <span>Best</span></li>
-                                <li><i class="fas fa-check"></i> Resolution <span>4K+HDR</span></li>
-                                <li><i class="fas fa-check"></i> Screens you can watch <span>4</span></li>
-                                <li><i class="fas fa-check"></i> Cancel anytime</li>
-                            </ul>
-                        </div>
-                        <div class="pricing-btn">
-                            <a href="~/#" class="btn">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
+                    }
             </div>
         </div>
     </div>

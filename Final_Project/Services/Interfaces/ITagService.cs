@@ -10,6 +10,7 @@ namespace Final_Project.Services.Interfaces
         Task<Tag> GetByIdAsync(int? id);
         TagDetailVM GetMappedDatasAsync(Tag dbTag);
         Task DeleteAsync(int id);
+        Task<List<Tag>> GetAllById(int? id);
     }
 }
 

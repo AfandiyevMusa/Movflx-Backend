@@ -75,13 +75,11 @@ namespace Final_Project.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(SeasonCreateVM request)
         {
-            await GetAllSeasons();
+            await GetAllSeasonsAndFilteredFilms();
             if (!ModelState.IsValid)
             {
                 return View(request);
             }
-
-            //var tags = await _tagService.GetAll();
 
             await _seasonService.CreateAsync(request);
 
@@ -133,6 +131,11 @@ namespace Final_Project.Areas.Admin.Controllers
             ViewBag.getFilms = await GetFilms();
         }
 
+        private async Task GetAllSeasonsAndFilteredFilms()
+        {
+            ViewBag.getFilteredFilms = await GetFilteredFilms();
+        }
+
         private async Task<SelectList> GetSeasons()
         {
             List<Season> seasons = await _seasonService.GetAllSeasons();
@@ -142,6 +145,12 @@ namespace Final_Project.Areas.Admin.Controllers
         private async Task<SelectList> GetFilms()
         {
             List<Film> films = await _filmService.GetAllFilmsAsync();
+            return new SelectList(films, "Id", "Name");
+        }
+
+        private async Task<SelectList> GetFilteredFilms()
+        {
+            List<Film> films = await _filmService.GetAllFilteredFilmsAsync();
             return new SelectList(films, "Id", "Name");
         }
 

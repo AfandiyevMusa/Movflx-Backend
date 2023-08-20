@@ -7,7 +7,7 @@ using Final_Project.Models;
 using Microsoft.AspNetCore.Mvc;
 using Final_Project.Services;
 using Final_Project.Services.Interfaces;
-using Final_Project.ViewComponents;
+//using Final_Project.ViewComponents;
 using Final_Project.Areas.Admin.ViewModels.Resolution;
 using Microsoft.EntityFrameworkCore;
 

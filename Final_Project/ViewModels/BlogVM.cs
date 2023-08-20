@@ -7,6 +7,7 @@ namespace Final_Project.ViewModels
 	{
         public List<Blog> Blogs { get; set; }
         public List<Tag> Tags { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }
 

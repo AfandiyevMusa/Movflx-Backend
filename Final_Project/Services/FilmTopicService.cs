@@ -28,7 +28,7 @@ namespace Final_Project.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task GetAllAsync() => await _context.FilmTopics.ToListAsync();
+        public async Task<List<FilmTopic>> GetAllAsync() => await _context.FilmTopics.ToListAsync();
 
         public async Task<IEnumerable<FilmTopic>> FindTopicsByConditionAsync(Expression<Func<FilmTopic, bool>> expression)
         {

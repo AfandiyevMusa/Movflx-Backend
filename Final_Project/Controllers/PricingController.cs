@@ -26,7 +26,7 @@ namespace Final_Project.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<Pricing> pricings = await _pricingService.GetAllPricings();
+            List<Pricing> pricings = await _pricingService.GetAllPricingsAsync();
 
             PricingVM pricing = new()
             {
