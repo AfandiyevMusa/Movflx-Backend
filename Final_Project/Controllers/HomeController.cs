@@ -74,8 +74,7 @@ public class HomeController : Controller
             Categories = categories
         };
 
-
-        return View();
+        return View(home);
     }
 }
 

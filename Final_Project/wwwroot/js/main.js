@@ -113,8 +113,8 @@ $('.ucm-active').owlCarousel({
 	margin: 30,
 	items: 4,
 	autoplay: false,
-	autoplayTimeout: 5000,
-	autoplaySpeed: 1000,
+	autoplayTimeout: 3000,
+	autoplaySpeed: 2000,
 	navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
 	nav: true,
 	dots: false,
@@ -367,3 +367,33 @@ function wowAnimation() {
 
 })(jQuery);
 
+
+$(document).ready(function () {
+	// Make the first tab active by default
+	$('.tab:first').addClass('active');
+
+	// Show the content of the first tab
+	var firstTabId = $('.tab:first').data('id');
+	$('#' + firstTabId).show();
+
+	// When a tab is clicked
+	$('.tab').click(function () {
+		// Get the data-id attribute value
+		var tabId = $(this).data('id');
+
+		// Remove active class from all tabs
+		$('.tab').removeClass('active');
+
+		// Add active class to the clicked tab
+		$(this).addClass('active');
+
+		// Fade out the currently visible tab content
+		$('.tab-pane:visible').fadeOut('fast', function () {
+			// Hide all tab content
+			$('.tab-pane').hide();
+
+			// Show the selected tab content with a fade effect
+			$('#' + tabId).fadeIn('fast');
+		});
+	});
+});
