@@ -183,6 +183,24 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 	$(".ucm-active-two").trigger('refresh.owl.carousel');
 });
 
+	let captions = document.querySelectorAll("#top-rated-movie .mainCap .caps .h4");
+	let allDetails = document.querySelectorAll("#top-rated-movie .wholeContent .contents");
+
+	captions.forEach(eachCaption => {
+		eachCaption.addEventListener("click", function (e) {
+			console.log(this);
+			document.querySelector(".active").classList.remove("active");
+			this.classList.add("active");
+
+			allDetails.forEach(eachDetail => {
+				if (this.getAttribute("data-id") == eachDetail.getAttribute("data-id")) {
+					eachDetail.classList.remove("d-none");
+				} else {
+					eachDetail.classList.add("d-none");
+				}
+			});
+		})
+	});
 
 
 $('.brand-active').slick({
@@ -397,3 +415,23 @@ $(document).ready(function () {
 		});
 	});
 });
+
+
+//let captions = document.querySelectorAll("#top-rated-movie .mainCap .caps .h4");
+//let allDetails = document.querySelectorAll("#top-rated-movie .wholeContent .contents");
+
+//captions.forEach(eachCaption => {
+//	eachCaption.addEventListener("click", function (e) {
+//		console.log(this);
+//		document.querySelector(".active").classList.remove("active");
+//		this.classList.add("active");
+
+//		allDetails.forEach(eachDetail => {
+//			if (this.getAttribute("data-id") == eachDetail.getAttribute("data-id")) {
+//				eachDetail.classList.remove("d-none");
+//			} else {
+//				eachDetail.classList.add("d-none");
+//			}
+//		});
+//	})
+//});
