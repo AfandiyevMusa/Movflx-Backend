@@ -41,11 +41,6 @@ namespace Final_Project.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Film>()
-            //.HasMany(e => e.Episodes)
-            //.WithOne(e => e.Film)
-            //.OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<Season>()
             .HasMany(e => e.Episodes)
             .WithOne(e => e.Season)
