@@ -7,6 +7,7 @@ namespace Final_Project.Services.Interfaces
     {
         Task<List<Season>> GetAllSeasons();
         Task<Season> GetByIdAsync(int? id);
+        Task<List<Season>> GetAllByIdAsync(int? id);
         SeasonDetailVM GetMappedDatasAsync(Season dbSeason);
         Task DeleteAsync(int id);
         Task CreateAsync(SeasonCreateVM model);

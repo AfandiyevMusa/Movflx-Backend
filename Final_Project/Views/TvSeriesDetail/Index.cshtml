@@ -1,4 +1,6 @@
-﻿@{
+﻿@model TvSeriesDetailVM
+
+@{
     ViewData["Title"] = "TV Series Detail Page";
 }
 
@@ -8,12 +10,11 @@
             <div class="col-xl-3 col-lg-4">
                 <div class="movie-details-img">
                     <img src="~/assets/img/poster/movie_details_img.jpg" alt="">
-                    <a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><img src="~/assets/img/images/play_icon.png" alt=""></a>
+                    <a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><img src="~/assets/img/images/play_icon.png" alt=""></a>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-8">
                 <div class="movie-details-content">
-                    <h5>New Episodes</h5>
                     <h2>The Easy <span>Reach</span></h2>
                     <div class="banner-meta">
                         <ul>
@@ -43,7 +44,7 @@
                                 <h6>Prime Video</h6>
                                 <span>Streaming Channels</span>
                             </li>
-                            <li class="watch"><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a></li>
+                            <li class="watch"><a href="https://www.youtube.com/watch?v=R2gbPxeNk2E" class="btn popup-video"><i class="fas fa-play"></i> Watch Now</a></li>
                         </ul>
                     </div>
                 </div>
@@ -71,50 +72,33 @@
                     </div>
                     <div class="episode-watch-wrap">
                         <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        <span class="season">Season 2</span>
-                                        <span class="video-count">5 Full Episodes</span>
-                                    </button>
-                                </div>
-                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <ul>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 1 - The World Is Purple</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 2 - Meaner Than Evil</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 3 - I Killed a Man Today</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 4 - Cowboys and Dreamers</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 5 - Freight Trains and Monsters</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingTwo">
-                                    <button class="btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <span class="season">Season 1</span>
-                                        <span class="video-count">5 Full Episodes</span>
-                                    </button>
-                                </div>
-                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <ul>
-                                            <li>
-                                                <a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 1 - The World Is Purple</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span>
-                                            </li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 2 - Meaner Than Evil</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                            <li>
-                                                <a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 3 - I Killed a Man Today</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span>
-                                            </li>
-                                            <li>
-                                                <a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 4 - Cowboys and Dreamers</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span>
-                                            </li>
-                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 5 - Freight Trains and Monsters</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            @*@if(Model.Films.Seasons.Count != 0)
+                                {*@
+                                    @foreach (var eachSeason in Model.Films.Seasons)
+                                        {
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne">
+                                                    <button class="btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        <span class="season">@eachSeason.Name</span>
+                                                        <span class="video-count">@Model.Episodes.Where(m=>m.SeasonId == eachSeason.Id).Count() Full Episodes</span>
+                                                        
+                                                    </button>
+                                                </div>
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                    <div class="card-body">
+                                                        <ul>
+                                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 1 - The World Is Purple</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
+                                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 2 - Meaner Than Evil</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
+                                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 3 - I Killed a Man Today</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
+                                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 4 - Cowboys and Dreamers</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
+                                                            <li><a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><i class="fas fa-play"></i> Episode 5 - Freight Trains and Monsters</a> <span class="duration"><i class="far fa-clock"></i> 28 Min</span></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                @*}*@
+                           
                         </div>
                     </div>
                 </div>

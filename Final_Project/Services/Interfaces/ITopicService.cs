@@ -8,6 +8,7 @@ namespace Final_Project.Services.Interfaces
 	{
         Task<List<Topic>> GetAllTopics();
         Task<Topic> GetByIdAsync(int? id);
+        Task<List<Topic>> GetAllByIdAsync(int? id);
         TopicDetailVM GetMappedDatasAsync(Topic dbTopic);
         Task DeleteAsync(int id);
     }

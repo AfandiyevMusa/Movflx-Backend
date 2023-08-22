@@ -1,39 +1,41 @@
-﻿@{
+﻿@model MovieDetailVM
+
+@{
     ViewData["Title"] = "Movie Detail Page";
 }
 
-<section class="movie-details-area" data-background="assets/img/bg/movie_details_bg.jpg">
+<section class="movie-details-area" style="background-color: #1f1e25;" data-background="~/assets/img/bg/movie_details_bg.jpg">
     <div class="container">
         <div class="row align-items-center position-relative">
             <div class="col-xl-3 col-lg-4">
                 <div class="movie-details-img">
-                    <img src="~/assets/img/poster/movie_details_img.jpg" alt="">
+                    <img src="~/assets/img/poster/@Model.Film.Images.FirstOrDefault()?.Image" style=" width: 303px; height: 430px;" alt="">
                     <a href="~/https://www.youtube.com/watch?v=R2gbPxeNk2E" class="popup-video"><img src="~/assets/img/images/play_icon.png" alt=""></a>
                 </div>
             </div>
             <div class="col-xl-6 col-lg-8">
                 <div class="movie-details-content">
-                    <h2>The Easy <span>Reach</span></h2>
+                    <h2>@Model.Film.Name</h2>
                     <div class="banner-meta">
                         <ul>
                             <li class="quality">
-                                <span>Pg 18</span>
-                                <span>hd</span>
+                                <span>Pg @Model.Film.MinAge</span>
+                                <span>@Model.Film.Resolution.ResolutionP</span>
                             </li>
                             <li class="category">
-                                <a href="~/#">Romance,</a>
-                                <a href="~/#">Drama</a>
+                                @foreach (var eachTopic in Model.Film.FilmTopics)
+                                {
+                                    <a href="~/#">@eachTopic.Topic.Name ,</a>
+                                }
                             </li>
                             <li class="release-time">
-                                <span><i class="far fa-calendar-alt"></i> 2021</span>
-                                <span><i class="far fa-clock"></i> 128 min</span>
+                                <span><i class="far fa-calendar-alt"></i> @Model.Film.CreatedDate.Year</span>
+                                <span><i class="far fa-clock"></i> @Model.Film.Duration min</span>
                             </li>
                         </ul>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet, consecetur adipiscing elseddo eiusmod tempor.There are many
-                        variations of passages of lorem
-                        Ipsum available, but the majority have suffered alteration in some injected humour.
+                        @Model.Film.Description
                     </p>
                     <div class="movie-details-prime">
                         <ul>
@@ -54,7 +56,7 @@
     </div>
 </section>
 
-<section class="tv-series-area tv-series-bg" data-background="assets/img/bg/tv_series_bg02.jpg">
+<section class="tv-series-area tv-series-bg" style="background-color: #1f1e25;" data-background="assets/img/bg/tv_series_bg02.jpg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
@@ -65,99 +67,36 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="movie-item mb-50">
-                    <div class="movie-poster">
-                        <a href="~/movie-details.html"><img src="~/assets/img/poster/ucm_poster09.jpg" alt=""></a>
-                    </div>
-                    <div class="movie-content">
-                        <div class="top">
-                            <h5 class="title"><a href="~/movie-details.html">Women's Day</a></h5>
-                            <span class="date">2021</span>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li><span class="quality">hd</span></li>
-                                <li>
-                                    <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                    <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="movie-item mb-50">
-                    <div class="movie-poster">
-                        <a href="~/movie-details.html"><img src="~/assets/img/poster/ucm_poster10.jpg" alt=""></a>
-                    </div>
-                    <div class="movie-content">
-                        <div class="top">
-                            <h5 class="title"><a href="~/movie-details.html">The Perfect Match</a></h5>
-                            <span class="date">2021</span>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li><span class="quality">4k</span></li>
-                                <li>
-                                    <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                    <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                </li>
-                            </ul>
+            @foreach (var eachFilm in Model.Films)
+                {
+                    <div class="col-xl-3 col-lg-4 col-sm-6">
+                        <div class="movie-item mb-50">
+                            <div class="movie-poster">
+                                <a href="~/movie-details.html"><img src="~/assets/img/poster/@eachFilm.Images.FirstOrDefault()?.Image" alt=""></a>
+                            </div>
+                            <div class="movie-content">
+                                <div class="top">
+                                    <h5 class="title"><a href="~/movie-details.html">@eachFilm.Name</a></h5>
+                                    <span class="date">@eachFilm.CreatedDate.Year</span>
+                                </div>
+                                <div class="bottom">
+                                    <ul>
+                                        <li><span class="quality">@eachFilm.Resolution.ResolutionP</span></li>
+                                        <li>
+                                            <span class="duration"><i class="far fa-clock"></i> @eachFilm.Duration min</span>
+                                            <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="movie-item mb-50">
-                    <div class="movie-poster">
-                        <a href="~/movie-details.html"><img src="~/assets/img/poster/ucm_poster03.jpg" alt=""></a>
-                    </div>
-                    <div class="movie-content">
-                        <div class="top">
-                            <h5 class="title"><a href="~/movie-details.html">The Dog Woof</a></h5>
-                            <span class="date">2021</span>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li><span class="quality">hd</span></li>
-                                <li>
-                                    <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                    <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-sm-6">
-                <div class="movie-item mb-50">
-                    <div class="movie-poster">
-                        <a href="~/movie-details.html"><img src="~/assets/img/poster/ucm_poster04.jpg" alt=""></a>
-                    </div>
-                    <div class="movie-content">
-                        <div class="top">
-                            <h5 class="title"><a href="~/movie-details.html">The Easy Reach</a></h5>
-                            <span class="date">2021</span>
-                        </div>
-                        <div class="bottom">
-                            <ul>
-                                <li><span class="quality">hd</span></li>
-                                <li>
-                                    <span class="duration"><i class="far fa-clock"></i> 128 min</span>
-                                    <span class="rating"><i class="fas fa-thumbs-up"></i> 3.5</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                }
         </div>
     </div>
 </section>
 
-<section class="newsletter-area newsletter-bg" data-background="assets/img/bg/newsletter_bg.jpg">
+<section class="newsletter-area newsletter-bg" style="background-color: #e3d801;" data-background="assets/img/bg/newsletter_bg.jpg">
     <div class="container">
         <div class="newsletter-inner-wrap">
             <div class="row align-items-center">

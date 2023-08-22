@@ -77,6 +77,8 @@ namespace Final_Project.Services
             _context.Seasons.Remove(season);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Season>> GetAllByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m => m.Episodes).Where(m => m.Id == id).ToListAsync();
     }
 }
 

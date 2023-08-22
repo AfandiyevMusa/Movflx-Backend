@@ -75,6 +75,8 @@ namespace Final_Project.Services
                                            Include(m => m.Film).
                                            FirstOrDefaultAsync(m => m.Id == id);
         }
+
+        public async Task<List<Episode>> GetAllByIdAsync(int? id) => await _context.Episodes.Include(m => m.Film).Include(m => m.Season).Where(m => m.Id == id).ToListAsync();
     }
 }
 

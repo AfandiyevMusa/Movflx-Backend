@@ -10,7 +10,7 @@ namespace Final_Project.Services.Interfaces
 	{
         Task<List<Episode>> GetAllEpisodes();
         Task<Episode> GetByIdAsync(int? id);
-
+        Task<List<Episode>> GetAllByIdAsync(int? id);
         EpisodeDetailVM GetMappedData(Episode episode);
         Task DeleteAsync(int id);
         Task CreateAsync(EpisodeCreateVM model);

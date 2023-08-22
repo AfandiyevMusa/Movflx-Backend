@@ -78,7 +78,7 @@ namespace Final_Project.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> Create(SeasonCreateVM request)
         {
-            await GetAllSeasonsAndFilteredFilms();
+            await GetAllSeasons();
             if (!ModelState.IsValid)
             {
                 return View(request);

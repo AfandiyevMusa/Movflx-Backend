@@ -8,6 +8,7 @@ namespace Final_Project.Services.Interfaces
 	{
         Task<List<Category>> GetAllCategories();
         Task<Category> GetByIdAsync(int? id);
+        Task<List<Category>> GetAllByIdAsync(int? id);
         CategoryDetailVM GetMappedDatasAsync(Category dbCategory);
         Task DeleteAsync(int id);
     }

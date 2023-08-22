@@ -14,6 +14,9 @@ namespace Final_Project.Services.Interfaces
         Task<Blog> GetWithIncludesAsync(int id);
         Task EditAsync(int blogId, BlogEditVM model);
         Task DeleteImageByIdAsync(int id);
+        Task<List<Blog>> GetPaginatedDatasAsync(int page, int take);
+        Task<int> GetCountAsync();
+        List<BlogVM> GetMappedDatas(List<Blog> blogs);
     }
 }
 

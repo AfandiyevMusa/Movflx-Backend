@@ -17,25 +17,29 @@ namespace Final_Project.Controllers
         private readonly AppDbContext _context;
         private readonly IFilmService _filmService;
         private readonly ITopicService _topicService;
+        private readonly ICategoryServices _categoryServices;
 
         public MovieDetailController(AppDbContext context,
                               IFilmService filmService,
-                              ITopicService topicService)
+                              ITopicService topicService,
+                              ICategoryServices categoryServices)
         {
             _context = context;
             _filmService = filmService;
-            _topicService = topicService;
+            _categoryServices = categoryServices;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             List<Film> films = await _filmService.GetAllFilmsAsync();
-            List<Topic> topics = await _topicService.GetAllTopics();
+            Film film = await _filmService.GetByIdAsync(id);
+            List<Category> categories = await _categoryServices.GetAllByIdAsync(film.CategoryId);
 
             MovieDetailVM movieDetail = new()
             {
                 Films = films,
-                Topics = topics
+                Film = film,
+                Categories = categories
             };
 
             return View(movieDetail);

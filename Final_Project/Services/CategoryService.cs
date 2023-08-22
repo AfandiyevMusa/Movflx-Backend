@@ -23,6 +23,8 @@ namespace Final_Project.Services
 
         public async Task<Category> GetByIdAsync(int? id) => await _context.Categories.FirstOrDefaultAsync(m => m.Id == id);
 
+        public async Task<List<Category>> GetAllByIdAsync(int? id) => await _context.Categories.Where(m=>m.Id == id).ToListAsync();
+
         public CategoryDetailVM GetMappedDatasAsync(Category dbCategory)
         {
             CategoryDetailVM model = new()

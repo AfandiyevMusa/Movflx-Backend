@@ -23,6 +23,8 @@ namespace Final_Project.Services
 
         public async Task<Topic> GetByIdAsync(int? id) => await _context.Topics.FirstOrDefaultAsync(m => m.Id == id);
 
+        public async Task<List<Topic>> GetAllByIdAsync(int? id) => await _context.Topics.Where(m => m.Id == id).ToListAsync();
+
         public TopicDetailVM GetMappedDatasAsync(Topic dbTopic)
         {
             TopicDetailVM model = new()

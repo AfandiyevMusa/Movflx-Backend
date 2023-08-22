@@ -74,6 +74,23 @@ namespace Final_Project.Services
             await _context.SaveChangesAsync();
         }
 
+        public List<BlogVM> GetMappedDatas(List<Blog> blogs)
+        {
+            List<BlogVM> list = new();
+            foreach (var blog in blogs)
+            {
+                list.Add(new BlogVM
+                {
+                    Id = blog.Id,
+                    Title = blog.Title,
+                    BlogAuthor = blog.BlogAuthor.FullName,
+                    BlogImage = blog.BlogImages.FirstOrDefault()?.Image
+                });
+            }
+
+            return list;
+        }
+
         public async Task<Blog> GetWithIncludesAsync(int id)
         {
             return await _context.Blogs.Where(m => m.Id == id).Include(m => m.BlogImages).Include(m => m.BlogAuthor).FirstOrDefaultAsync();
@@ -119,6 +136,20 @@ namespace Final_Project.Services
             {
                 System.IO.File.Delete(path);
             }
+        }
+
+        public async Task<List<Blog>> GetPaginatedDatasAsync(int page, int take)
+        {
+            return await _context.Blogs.Include(m => m.BlogAuthor)
+                                        .Include(m => m.BlogImages)
+                                        .Skip((page - 1) * take)
+                                        .Take(take)
+                                        .ToListAsync();
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Blogs.CountAsync();
         }
     }
 }
