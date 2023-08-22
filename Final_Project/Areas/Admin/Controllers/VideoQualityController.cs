@@ -8,12 +8,15 @@ using Final_Project.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Final_Project.Areas.Admin.ViewModels.VideoQuality;
 using Microsoft.EntityFrameworkCore;
+using Final_Project.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Final_Project.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class VideoQualityController : Controller
     {
         private readonly AppDbContext _context;

@@ -15,6 +15,7 @@ using Final_Project.Models;
 namespace Final_Project.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class ServiceController : Controller
     {
         private readonly AppDbContext _context;

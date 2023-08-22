@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Final_Project.Areas.Admin.ViewModels.Seasons;
 using Final_Project.Data;
+using Final_Project.Helpers;
 using Final_Project.Models;
 using Final_Project.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Final_Project.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class SeasonController : Controller
     {
         private readonly AppDbContext _context;

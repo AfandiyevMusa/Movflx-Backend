@@ -16,7 +16,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Final_Project.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles = "SuperAdmin,Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class BlogAuthorController : Controller
     {
         private readonly AppDbContext _context;

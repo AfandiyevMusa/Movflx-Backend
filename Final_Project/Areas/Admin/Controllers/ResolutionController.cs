@@ -10,10 +10,13 @@ using Final_Project.Services.Interfaces;
 //using Final_Project.ViewComponents;
 using Final_Project.Areas.Admin.ViewModels.Resolution;
 using Microsoft.EntityFrameworkCore;
+using Final_Project.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Final_Project.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "SuperAdmin,Admin")]
     public class ResolutionController : Controller
     {
         private readonly AppDbContext _context;
