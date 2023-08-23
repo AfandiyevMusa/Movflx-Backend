@@ -1,4 +1,5 @@
 ﻿@model BlogVM
+@*@model Paginate<BlogVM>*@
 
 <section class="breadcrumb-area breadcrumb-bg" data-background="assets/img/bg/breadcrumb_bg.jpg">
     <div class="container">
@@ -23,35 +24,35 @@
         <div class="row">
             <div class="col-lg-8">
                 @foreach (var eachBlog in Model.Blogs)
-                    {
-                        <div class="blog-post-item">
-                            <div class="blog-post-thumb">
-                                <a asp-controller="BlogDetail" asp-action="Index" asp-route-id="@eachBlog.Id"><img src="~/assets/img/blog/@eachBlog.BlogImages.FirstOrDefault().Image" alt=""></a>
-                            </div>
-                            <div class="blog-post-content">
-                                <span class="date"><i class="far fa-clock"></i>@eachBlog.CreatedDate.ToString("MM/dd/yyyy")</span>
-                                <h2 class="title"><a href="~/blogDetails.html">@eachBlog.Title</a></h2>
-                                <p>
-                                    @eachBlog.Description
-                                </p>
-                                <div class="blog-post-meta">
-                                    <ul>
-                                        <li><i class="far fa-user"></i> by <a href="~/#">@eachBlog.BlogAuthor.FullName</a></li>
-                                        <li><i class="far fa-thumbs-up"></i> 63</li>
-                                        <li><i class="far fa-comments"></i><a href="~/#">12 Comments</a></li>
-                                    </ul>
-                                    <div class="read-more">
-                                        <a href="~/blog-details.html">
-                                            Read More <i class="fas fa-angle-double-right"></i>
-                                        </a>
-                                    </div>
+                {
+                    <div class="blog-post-item">
+                        <div class="blog-post-thumb">
+                            <a asp-controller="BlogDetail" asp-action="Index" asp-route-id="@eachBlog.Id"><img src="~/assets/img/blog/@eachBlog.BlogImages.FirstOrDefault().Image" alt=""></a>
+                        </div>
+                        <div class="blog-post-content">
+                            <span class="date"><i class="far fa-clock"></i>@eachBlog.CreatedDate.ToString("MM/dd/yyyy")</span>
+                            <h2 class="title"><a href="~/blogDetails.html">@eachBlog.Title</a></h2>
+                            <p>
+                                @eachBlog.Description
+                            </p>
+                            <div class="blog-post-meta">
+                                <ul>
+                                    <li><i class="far fa-user"></i> by <a href="~/#">@eachBlog.BlogAuthor.FullName</a></li>
+                                    <li><i class="far fa-thumbs-up"></i> 63</li>
+                                    <li><i class="far fa-comments"></i><a href="~/#">12 Comments</a></li>
+                                </ul>
+                                <div class="read-more">
+                                    <a href="~/blog-details.html">
+                                        Read More <i class="fas fa-angle-double-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    }
+                    </div>
+                }
                 <div class="pagination-wrap mt-60">
-                    <nav>
-                        <ul>
+                    <nav aria-label="...">
+                        <ul class="pagination">
                             <li class="active"><a href="~/#">1</a></li>
                             <li><a href="~/#">2</a></li>
                             <li><a href="~/#">3</a></li>
@@ -79,9 +80,9 @@
                         <div class="sidebar-cat">
                             <ul>
                                 @foreach (var eachCategorie in Model.Categories)
-                                    {
-                                        <li><a href="~/#">@eachCategorie.Name</a> <span>12</span></li>
-                                    }
+                                {
+                                    <li><a href="~/#">@eachCategorie.Name</a> <span>12</span></li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -92,23 +93,23 @@
                         <div class="rc-post">
                             <ul>
                                 @foreach (var eachMiniBlog in Model.Blogs)
-                                    {
-                                        <li class="rc-post-item">
-                                            <div class="thumb">
+                                {
+                                    <li class="rc-post-item">
+                                        <div class="thumb">
+                                            <a href="~/blog-details.html">
+                                                <img src="~/assets/img/blog/@eachMiniBlog.BlogImages.FirstOrDefault()?.Image" style="width:100px; height:80px;" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="content">
+                                            <h5 class="title">
                                                 <a href="~/blog-details.html">
-                                                    <img src="~/assets/img/blog/@eachMiniBlog.BlogImages.FirstOrDefault().Image" style="width:100px; height:80px;" alt="">
+                                                    @eachMiniBlog.Title
                                                 </a>
-                                            </div>
-                                            <div class="content">
-                                                <h5 class="title">
-                                                    <a href="~/blog-details.html">
-                                                        @eachMiniBlog.Title
-                                                    </a>
-                                                </h5>
-                                                <span class="date"><i class="far fa-clock"></i> @eachMiniBlog.CreatedDate.ToString("MM/dd/yyyy") </span>
-                                            </div>
-                                        </li>
-                                    }
+                                            </h5>
+                                            <span class="date"><i class="far fa-clock"></i> @eachMiniBlog.CreatedDate.ToString("MM/dd/yyyy") </span>
+                                        </div>
+                                    </li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -119,9 +120,9 @@
                         <div class="tag-list">
                             <ul>
                                 @foreach (var eachTags in Model.Tags)
-                                    {
-                                        <li><a href="~/#">@eachTags.Name</a></li>
-                                    }
+                                {
+                                    <li><a href="~/#">@eachTags.Name</a></li>
+                                }
                             </ul>
                         </div>
                     </div>

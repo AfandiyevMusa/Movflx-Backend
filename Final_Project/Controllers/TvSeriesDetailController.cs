@@ -37,14 +37,14 @@ namespace Final_Project.Controllers
         {
             Film films = await _filmService.GetByIdAsync(id);
             //List<Category> categories = await _categoryServices.GetAllCategories();
-            //List<Season> seasons = await _seasonService.GetAllByIdAsync(id);
+            List<Season> seasons = await _seasonService.GetAllByIdAsync(id);
             //List<Episode> episodes = await _episodeService.GetAllByIdAsync(id);
 
             TvSeriesDetailVM tvSeriesDetailVM = new()
             {
                 Films = films,
                 //Categories = categories,
-                //Seasons = seasons,
+                Seasons = seasons,
                 //Episodes = episodes
             };
 

@@ -84,7 +84,8 @@ namespace Final_Project.Services
                     Id = blog.Id,
                     Title = blog.Title,
                     BlogAuthor = blog.BlogAuthor.FullName,
-                    BlogImage = blog.BlogImages.FirstOrDefault()?.Image
+                    BlogImage = blog.BlogImages.FirstOrDefault()?.Image,
+                    CreatedDate = blog.CreatedDate.ToString("dd-MM-yyyy")
                 });
             }
 

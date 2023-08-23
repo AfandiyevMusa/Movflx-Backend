@@ -78,7 +78,7 @@ namespace Final_Project.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Season>> GetAllByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m => m.Episodes).Where(m => m.Id == id).ToListAsync();
+        public async Task<List<Season>> GetAllByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m => m.Episodes).Where(m => m.FilmId == id).ToListAsync();
     }
 }
 
