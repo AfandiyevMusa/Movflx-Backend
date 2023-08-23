@@ -1,0 +1,8 @@
+﻿@model SearchPartialVM
+
+@foreach (var item in Model.Blogs)
+{
+    <li class="list-group-item">
+        <a asp-controller="BlogDetail" asp-action="Index" asp-route-id="@item.Id">@item.Title</a>
+    </li>
+}

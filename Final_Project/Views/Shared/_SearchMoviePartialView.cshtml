@@ -1,0 +1,8 @@
+﻿@model SearchPartialVM
+
+@foreach (var item in Model.Films)
+{
+    <li class="list-group-item">
+        <a asp-controller="Film" asp-action="Detail" asp-route-id="@item.Id">@item.Name</a>
+    </li>
+}

@@ -69,9 +69,11 @@
                             <h5 class="title">Search Objects</h5>
                         </div>
                         <form action="#" class="sidebar-search">
-                            <input type="text" placeholder="Search...">
+                            <input id="inputBlog-search" type="text" placeholder="Search...">
                             <button><i class="fas fa-search"></i></button>
                         </form>
+                        <ul class="list-group" id="searchBlogList">
+                        </ul>
                     </div>
                     <div class="widget blog-widget">
                         <div class="widget-title mb-30">
@@ -152,3 +154,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script src="~/js/search.js"></script>
+}
