@@ -1,6 +1,60 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Final_Project.Areas.Admin.ViewModels.Contact;
+@model ContactDetailVM
+
 @{
+    ViewData["Title"] = "Detail";
 }
 
+<style>
+    .custom-textarea {
+        border-color: black;
+        outline: none !important;
+    }
+
+    .send {
+        background-color: #e1d606;
+        outline: none !important;
+        color: black;
+        transition: 0.5s;
+    }
+
+    .send:hover{
+        background-color: black;
+        color:#e1d606;
+    }
+
+</style>
+
+<div class="container my-3">
+    <div class="card">
+        <div class="card-header bg-primary text-white" style="background-color: #e1d606;">
+            <h5 class="mb-0" >Applicant Username: @Model.ApplicantName</h5>
+        </div>
+        <div class="card-body mt-3">
+            <p class="card-text"><strong>Name:</strong> @Model.Name</p>
+            <p class="card-text"><strong>Email:</strong> @Model.Email</p>
+            <p class="card-text"><strong>Subject:</strong> @Model.Subject</p>
+            <p class="card-text"><strong>Message:</strong> @Model.Message</p>
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            @using (Html.BeginForm("Detail", "Contact", new { id = Model.Id }, FormMethod.Post))
+            {
+                @Html.HiddenFor(m => m.Id)
+                @Html.ValidationSummary()
+
+                <fieldset>
+                    <legend class="text-primary" style="color: black;">Answer to Email</legend>
+                    <div class="form-group">
+                        @Html.TextAreaFor(m => m.EmailModel.Body, new { required = "required", @class = "form-control custom-textarea", rows = "6" })
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Send" class="btn btn-success mt-3 send" />
+                    </div>
+                </fieldset>
+            }
+        </div>
+    </div>
+</div>

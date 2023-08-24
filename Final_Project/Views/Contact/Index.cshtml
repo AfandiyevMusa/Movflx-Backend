@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Contact
+
+@{
     ViewData["Title"] = "Contact Page";
 }
 
@@ -35,19 +37,53 @@
                         <h5 class="title">Contact Form</h5>
                     </div>
                     <div class="contact-form">
-                        <form action="#">
+                        <form asp-action="CreateContact" method="post" id="contact-form">
                             <div class="row">
+                                <input hidden asp-for="CreatorName" name="CreatorName" value="@User.Identity.Name" />
                                 <div class="col-md-6">
-                                    <input type="text" placeholder="Your Name *" />
+                                    <label for="name">Name</label>
+                                    <input asp-for="Name" name="name" id="name" type="text" placeholder="Your Name..." />
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Your  Email *" />
+                                    <label for="email">Email</label>
+                                    <input asp-for="Email" name="email" id="email" type="email" placeholder="Your  Email *" />
                                 </div>
                             </div>
-                            <input type="text" placeholder="Subject *" />
-                            <textarea name="message"
-                                      placeholder="Type Your Message..."></textarea>
-                            <button class="btn">Send Message</button>
+
+                            <div>
+                                <label for="email">Subject</label>
+                                <input asp-for="Subject" name="subject" id="subject" type="text" placeholder="Subject *" />
+                            </div>
+
+                            <div>
+                                <textarea asp-for="Message" id="message" name="message" rows="7" placeholder="Type Your Message..."></textarea>
+                            </div>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <input type="submit" class="btn btn-lg btn-color btn-button" value="Send Message" id="submit-message">
+                                <div id="msg" class="message"></div>
+                            }
+                            else
+                            {
+                                <a asp-controller="Account" asp-action="SignIn">
+                                    <input class="btn btn-lg btn-color btn-button" value="Send Message" id="submit-message">
+                                    <div id="msg" class="message"></div>
+                                </a>
+
+                            }
+
+                            @*@if (User.Identity.IsAuthenticated)
+        {
+            <button type="submit" value="Send Message" id="submit-message" class="btn">Send Message</button>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="SignIn">
+                <button type="submit" value="Send Message" id="submit-message" class="btn">Send Message</button>
+            </a>
+
+        }*@
                         </form>
                     </div>
                 </div>

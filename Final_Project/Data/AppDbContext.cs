@@ -18,6 +18,7 @@ namespace Final_Project.Data
         public DbSet<Pricing> Pricings { get; set; }
         public DbSet<VideoQuality> VideoQualities { get; set; }
         public DbSet<Resolution> Resolutions { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
 
         public DbSet<BlogAuthor> BlogAuthors { get; set; }
         public DbSet<Blog> Blogs { get; set; }
