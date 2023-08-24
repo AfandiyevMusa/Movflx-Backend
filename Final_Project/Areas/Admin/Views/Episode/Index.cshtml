@@ -1,4 +1,4 @@
-﻿@model List<EpisodeVM>
+﻿@model Paginate<EpisodeVM>
 
 @{
     ViewData["Title"] = "Episodes View";
@@ -36,7 +36,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var episode in Model)
+                @foreach (var episode in Model.Datas)
                 {
                     <tr class="parent">
                         <td>
@@ -57,7 +57,7 @@
                 }
             </tbody>
         </table>
-        @*<div class="pagination d-flex justify-content-center mt-3">
+        <div class="pagination d-flex justify-content-center mt-3">
                 <nav aria-label="...">
                     <ul class="pagination">
                         <li class="page-item @(Model.hasPrev ? "" : "disabled")">
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>*@
+            </div>
     </div>
 </div>
 

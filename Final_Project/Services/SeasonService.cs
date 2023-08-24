@@ -79,6 +79,39 @@ namespace Final_Project.Services
         }
 
         public async Task<List<Season>> GetAllByIdAsync(int? id) => await _context.Seasons.Include(m => m.Film).Include(m => m.Episodes).Where(m => m.FilmId == id).ToListAsync();
+
+        public List<SeasonVM> GetMappedDatas(List<Season> seasons)
+        {
+            List<SeasonVM> list = new();
+            foreach (var season in seasons)
+            {
+                list.Add(new SeasonVM
+                {
+                    Id = season.Id,
+                    Name = season.Name,
+                    Film = season.Film.Name,
+                    FilmImage = season.Film.Images.FirstOrDefault()?.Image,
+                    CreatedDate = season.CreatedDate.ToString("dd-MM-yyyy")
+                });
+            }
+
+            return list;
+        }
+
+        public async Task<List<Season>> GetPaginatedDatasAsync(int page, int take)
+        {
+            return await _context.Seasons.Include(m => m.Film)
+                                        .ThenInclude(m=>m.Images)
+                                        .Include(m => m.Episodes)
+                                        .Skip((page - 1) * take)
+                                        .Take(take)
+                                        .ToListAsync();
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Seasons.CountAsync();
+        }
     }
 }
 

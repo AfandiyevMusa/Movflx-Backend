@@ -37,25 +37,28 @@ namespace Final_Project.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            List<SeasonVM> list = new();
+            int take = 5;
+            var paginatedDatas = await _seasonService.GetPaginatedDatasAsync(page, take);
+            var pageCount = await GetCountAsync(take);
 
-            List<Season> datas = await _context.Seasons.Include(m => m.Episodes).Include(m => m.Film).ThenInclude(m=>m.Images).OrderByDescending(m => m.Id).ToListAsync();
+            ViewBag.count = pageCount;
 
-            foreach (var item in datas)
-            {
-                list.Add(new SeasonVM
-                {
-                    Id = item.Id,
-                    Name = item.Name,
-                    Film = item.Film.Name,
-                    FilmImage = item.Film.Images.FirstOrDefault()?.Image,
-                    CreatedDate = item.CreatedDate.ToString("dddd, dd MMMM yyyy")
-                });;
-            }
+            List<SeasonVM> mappedDatas = _seasonService.GetMappedDatas(paginatedDatas);
 
-            return View(list);
+            Paginate<SeasonVM> result = new(mappedDatas, page, pageCount);
+
+            return View(result);
+        }
+
+        private async Task<int> GetCountAsync(int take)
+        {
+            int count = await _seasonService.GetCountAsync();
+
+            var res = (int)Math.Ceiling((decimal)count / take);
+
+            return res;
         }
 
         [HttpGet]

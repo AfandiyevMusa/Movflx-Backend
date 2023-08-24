@@ -1,4 +1,5 @@
-﻿@model List<MovieVM>
+﻿@model Paginate<MovieVM>
+}
 
 @{
     ViewData["Title"] = "Movie View";
@@ -45,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var movie in Model)
+                @foreach (var movie in Model.Datas)
                 {
                     <tr class="parent">
                         <td>
@@ -75,7 +76,7 @@
                 }
             </tbody>
         </table>
-        @*<div class="pagination d-flex justify-content-center mt-3">
+        <div class="pagination d-flex justify-content-center mt-3">
                 <nav aria-label="...">
                     <ul class="pagination">
                         <li class="page-item @(Model.hasPrev ? "" : "disabled")">
@@ -92,7 +93,7 @@
                         </li>
                     </ul>
                 </nav>
-            </div>*@
+        </div>
     </div>
 </div>
 

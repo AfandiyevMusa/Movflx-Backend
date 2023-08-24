@@ -14,6 +14,10 @@ namespace Final_Project.Services.Interfaces
         Task<Season> GetWithIncludesAsync(int id);
         Task EditAsync(int seasonId, SeasonEditVM model);
         Task DeleteImageByIdAsync(int id);
+
+        List<SeasonVM> GetMappedDatas(List<Season> seasons);
+        Task<List<Season>> GetPaginatedDatasAsync(int page, int take);
+        Task<int> GetCountAsync();
     }
 }
 

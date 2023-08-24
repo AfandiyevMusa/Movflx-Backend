@@ -16,6 +16,10 @@ namespace Final_Project.Services.Interfaces
         Task CreateAsync(EpisodeCreateVM model);
         Task EditAsync(int episodeId, EpisodeEditVM model);
         Task<Episode> GetByIdWithAllIncludesAsync(int? id);
+
+        List<EpisodeVM> GetMappedDatas(List<Episode> episodes);
+        Task<List<Episode>> GetPaginatedDatasAsync(int page, int take);
+        Task<int> GetCountAsync();
     }
 }
 

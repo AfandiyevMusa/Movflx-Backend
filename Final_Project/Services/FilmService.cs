@@ -173,6 +173,43 @@ namespace Final_Project.Services
         {
            return await _context.Films.FindAsync(id);
         }
+
+
+        public List<MovieVM> GetMappedDatas(List<Film> films)
+        {
+            List<MovieVM> list = new();
+            foreach (var film in films)
+            {
+                list.Add(new MovieVM
+                {
+                    Id = film.Id,
+                    Name = film.Name,
+                    Description = film.Description,
+                    Resolution = film.Resolution.ResolutionP,
+                    Image = film.Images.FirstOrDefault()?.Image,
+                    Category = film.Category.Name,
+                    Duration = film.Duration,
+                    MinAge = film.MinAge
+                });
+            }
+
+            return list;
+        }
+
+        public async Task<List<Film>> GetPaginatedDatasAsync(int page, int take)
+        {
+            return await _context.Films.Include(m => m.Category)
+                                        .Include(m => m.Resolution)
+                                        .Include(m=>m.Images)
+                                        .Skip((page - 1) * take)
+                                        .Take(take)
+                                        .ToListAsync();
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Films.CountAsync();
+        }
     }
 }
 

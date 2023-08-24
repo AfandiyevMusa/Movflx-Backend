@@ -16,6 +16,10 @@ namespace Final_Project.Services.Interfaces
         Task CreateAsync(MovieCreateVM model);
         Task EditAsync(int productId, MovieEditVM model);
         Task<Film> GetByIdWithAllIncludesAsync(int? id);
+
+        List<MovieVM> GetMappedDatas(List<Film> films);
+        Task<List<Film>> GetPaginatedDatasAsync(int page, int take);
+        Task<int> GetCountAsync();
     }
 }
 

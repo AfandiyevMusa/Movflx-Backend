@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Final_Project.Data;
+using Final_Project.Helpers;
 using Final_Project.Models;
 using Final_Project.Services.Interfaces;
 using Final_Project.ViewModels;
@@ -35,6 +36,7 @@ namespace Final_Project.Controllers
 
             return View(pricing);
         }
+
     }
 }
 

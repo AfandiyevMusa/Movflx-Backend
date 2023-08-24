@@ -9,6 +9,7 @@ using Final_Project.Models;
 using Final_Project.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -46,29 +47,28 @@ namespace Final_Project.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            List<MovieVM> movieList = new();
+            int take = 5;
+            var paginatedDatas = await _filmService.GetPaginatedDatasAsync(page, take);
+            var pageCount = await GetCountAsync(take);
 
-            IEnumerable<Film> films = await _filmService.GetAllFilmsAsync();
+            ViewBag.count = pageCount;
 
-            foreach (Film eachFilm in films)
-            {
-                MovieVM model = new()
-                {
-                    Id = eachFilm.Id,
-                    Name = eachFilm.Name,
-                    Description = eachFilm.Description,
-                    MinAge = eachFilm.MinAge,
-                    Duration = eachFilm.Duration,
-                    Resolution = eachFilm.Resolution.ResolutionP,
-                    Category = eachFilm.Category.Name,
-                    Image = eachFilm.Images.FirstOrDefault()?.Image
-                };
-                movieList.Add(model);
-            }
+            List<MovieVM> mappedDatas = _filmService.GetMappedDatas(paginatedDatas);
 
-            return View(movieList);
+            Paginate<MovieVM> result = new(mappedDatas, page, pageCount);
+
+            return View(result);
+        }
+
+        private async Task<int> GetCountAsync(int take)
+        {
+            int count = await _filmService.GetCountAsync();
+
+            var res = (int)Math.Ceiling((decimal)count / take);
+
+            return res;
         }
 
         [HttpGet]

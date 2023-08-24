@@ -44,25 +44,28 @@ namespace Final_Project.Areas.Admin.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1)
         {
-            List<EpisodeVM> episodeList = new();
+            int take = 5;
+            var paginatedDatas = await _episodeService.GetPaginatedDatasAsync(page, take);
+            var pageCount = await GetCountAsync(take);
 
-            IEnumerable<Episode> episodes = await _episodeService.GetAllEpisodes();
+            ViewBag.count = pageCount;
 
-            foreach (Episode eachEpisode in episodes)
-            {
-                EpisodeVM model = new()
-                {
-                    Id = eachEpisode.Id,
-                    Name = eachEpisode.Name,
-                    Film = eachEpisode.Film.Name,
-                    Season = eachEpisode.Season.Name
-                };
-                episodeList.Add(model);
-            }
+            List<EpisodeVM> mappedDatas = _episodeService.GetMappedDatas(paginatedDatas);
 
-            return View(episodeList);
+            Paginate<EpisodeVM> result = new(mappedDatas, page, pageCount);
+
+            return View(result);
+        }
+
+        private async Task<int> GetCountAsync(int take)
+        {
+            int count = await _episodeService.GetCountAsync();
+
+            var res = (int)Math.Ceiling((decimal)count / take);
+
+            return res;
         }
 
         [HttpGet]
