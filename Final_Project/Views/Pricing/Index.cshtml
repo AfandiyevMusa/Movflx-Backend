@@ -35,7 +35,7 @@
         <div class="pricing-box-wrap">
             <div class="row justify-content-center">
                 @foreach (var eachPlan in Model.Pricings)
-                    {
+                {
                     <div class="col-lg-4 col-md-6 col-sm-8">
                         <div class="pricing-box-item mb-30">
                             <div class="pricing-top">
@@ -58,7 +58,18 @@
                             </div>
                         </div>
                     </div>
-                    }
+                }
+                <div class="pagination-wrap mt-60">
+                    <nav aria-label="...">
+                        <ul class="pagination">
+                            <li class="active"><a href="~/#">1</a></li>
+                            <li><a href="~/#">2</a></li>
+                            <li><a href="~/#">3</a></li>
+                            <li><a href="~/#">4</a></li>
+                            <li><a href="~/#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
